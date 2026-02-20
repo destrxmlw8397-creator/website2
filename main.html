@@ -3,30 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>প্রো শপ - আলটিমেট প্রফেশনাল POS সিস্টেম</title>
-    
-    <!-- Core CSS -->
+    <title>আমার দোকান - প্রফেশনাল POS সিস্টেম</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    
-    <!-- Font Awesome & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Google Drive API -->
-    <script src="https://apis.google.com/js/api.js"></script>
-    
-    <!-- Dropbox API -->
-    <script src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="YOUR_APP_KEY"></script>
-    
-    <!-- PWA Support -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#4f46e5">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    
     <style>
         * {
             box-sizing: border-box;
@@ -42,46 +24,12 @@
             --warning: #f59e0b;
             --dark: #1f2937;
             --light: #f3f4f6;
-            --success: #10b981;
-            --info: #3b82f6;
         }
         
         body {
             font-family: 'Hind Siliguri', 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            transition: all 0.3s ease;
-        }
-        
-        /* Language Selector */
-        .language-selector {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 10001;
-            background: white;
-            border-radius: 30px;
-            padding: 5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .lang-btn {
-            padding: 8px 16px;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .lang-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .lang-btn:not(.active) {
-            background: #f3f4f6;
-            color: #374151;
         }
         
         /* Modal Styles */
@@ -105,12 +53,17 @@
             max-height: 90vh;
             overflow-y: auto;
             animation: modalSlideIn 0.3s ease-out;
-            border-radius: 15px;
         }
         
         @keyframes modalSlideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         
         /* POS Grid */
@@ -127,8 +80,13 @@
                 gap: 10px;
             }
             
-            .pos-grid > div:first-child { order: 1; }
-            .pos-grid > div:last-child { order: 2; }
+            .pos-grid > div:first-child {
+                order: 1;
+            }
+            
+            .pos-grid > div:last-child {
+                order: 2;
+            }
             
             .mobile-menu-active { 
                 display: block !important; 
@@ -143,21 +101,64 @@
             }
             
             @keyframes slideIn {
-                from { transform: translateX(-100%); }
-                to { transform: translateX(0); }
+                from {
+                    transform: translateX(-100%);
+                }
+                to {
+                    transform: translateX(0);
+                }
             }
             
-            .modal-content { width: 95% !important; margin: 10px auto; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
-            .text-2xl { font-size: 1.2rem !important; }
-            .p-6 { padding: 1rem !important; }
-            .product-card { padding: 0.75rem !important; }
-            .product-card p { font-size: 0.85rem !important; }
-            .cart-item { flex-direction: column !important; align-items: flex-start !important; gap: 0.5rem !important; padding: 0.75rem !important; }
-            #pos-search { font-size: 16px !important; padding: 12px !important; }
-            .touch-target { min-height: 48px !important; }
-            button, .btn-primary, .btn-success, .btn-danger { font-size: 16px !important; padding: 12px !important; }
-            input, select, textarea { font-size: 16px !important; padding: 12px !important; }
+            .modal-content {
+                width: 95% !important;
+                margin: 10px auto;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.2rem !important;
+            }
+            
+            .p-6 {
+                padding: 1rem !important;
+            }
+            
+            .product-card {
+                padding: 0.75rem !important;
+            }
+            
+            .product-card p {
+                font-size: 0.85rem !important;
+            }
+            
+            .cart-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.5rem !important;
+                padding: 0.75rem !important;
+            }
+            
+            #pos-search {
+                font-size: 16px !important;
+                padding: 12px !important;
+            }
+            
+            .touch-target {
+                min-height: 48px !important;
+            }
+            
+            button, .btn-primary, .btn-success, .btn-danger {
+                font-size: 16px !important;
+                padding: 12px !important;
+            }
+            
+            input, select, textarea {
+                font-size: 16px !important;
+                padding: 12px !important;
+            }
         }
 
         /* Print Styles */
@@ -317,6 +318,34 @@
             min-width: 44px;
         }
         
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none !important;
+            }
+            
+            .mobile-full {
+                width: 100% !important;
+            }
+            
+            .text-sm-mobile {
+                font-size: 0.75rem !important;
+            }
+            
+            .p-mobile {
+                padding: 0.5rem !important;
+            }
+            
+            .grid-cols-mobile {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .overflow-x-mobile {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+        
         /* Buttons */
         .btn-primary {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -335,7 +364,9 @@
             box-shadow: 0 6px 10px rgba(79, 70, 229, 0.4);
         }
         
-        .btn-primary:active { transform: translateY(0); }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
         
         .btn-success {
             background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
@@ -439,185 +470,30 @@
         }
         
         @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
         
-        .toast.success { border-left-color: var(--secondary); }
-        .toast.error { border-left-color: var(--danger); }
-        .toast.warning { border-left-color: var(--warning); }
-        
-        /* Stat Cards */
-        .stat-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-            border-left: 4px solid var(--primary);
+        .toast.success {
+            border-left-color: var(--secondary);
         }
         
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        .toast.error {
+            border-left-color: var(--danger);
         }
         
-        .chart-container {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-        
-        /* Product Image Gallery */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            transition: all 0.3s;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-item .remove-image {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: rgba(239, 68, 68, 0.8);
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s;
-        }
-        
-        .gallery-item:hover .remove-image {
-            opacity: 1;
-        }
-        
-        /* Branch Selector */
-        .branch-selector {
-            position: fixed;
-            top: 70px;
-            right: 10px;
-            z-index: 1000;
-            background: white;
-            border-radius: 30px;
-            padding: 5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        /* Offline Badge */
-        .offline-badge {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            background: var(--warning);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            z-index: 1000;
-            animation: pulse 2s infinite;
-        }
-        
-        /* Drag & Drop */
-        .draggable {
-            cursor: move;
-            transition: all 0.3s;
-        }
-        
-        .draggable.dragging {
-            opacity: 0.5;
-            transform: scale(0.95);
-        }
-        
-        /* Keyboard Shortcuts Hint */
-        .shortcuts-hint {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background: var(--dark);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 12px;
-            z-index: 1000;
-            cursor: pointer;
-            opacity: 0.5;
-            transition: all 0.3s;
-        }
-        
-        .shortcuts-hint:hover {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-        
-        /* Warranty Badge */
-        .warranty-badge {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            background: var(--success);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 15px;
-            font-size: 8px;
-        }
-        
-        /* Serial Number Input */
-        .serial-input {
-            font-family: monospace;
-            letter-spacing: 2px;
+        .toast.warning {
+            border-left-color: var(--warning);
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans transition-colors duration-300" data-layout="desktop" data-language="bn" data-offline="false">
-
-    <!-- Language Selector -->
-    <div class="language-selector">
-        <button class="lang-btn active" onclick="setLanguage('bn')">বাংলা</button>
-        <button class="lang-btn" onclick="setLanguage('en')">English</button>
-    </div>
-    
-    <!-- Branch Selector -->
-    <div class="branch-selector hidden" id="branchSelector">
-        <select id="branchSelect" onchange="switchBranch(this.value)" class="border-0 bg-transparent px-3 py-2">
-            <option value="main">মূল শাখা</option>
-        </select>
-    </div>
-    
-    <!-- Offline Mode Badge -->
-    <div class="offline-badge hidden" id="offlineBadge">
-        <i class="fas fa-wifi-slash mr-1"></i> অফলাইন মোড
-    </div>
-    
-    <!-- Keyboard Shortcuts Hint -->
-    <div class="shortcuts-hint" onclick="showShortcuts()">
-        <i class="fas fa-keyboard mr-1"></i> শর্টকাট
-    </div>
+<body class="bg-gray-100 font-sans transition-colors duration-300" data-layout="desktop">
 
     <!-- Auth Screen -->
     <div id="auth-screen">
@@ -627,49 +503,49 @@
                     <i class="fas fa-store text-white text-4xl"></i>
                 </div>
             </div>
-            <h2 class="text-2xl md:text-3xl font-bold text-indigo-700 mb-6 shop-name-display">প্রো শপ</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-indigo-700 mb-6 shop-name-display">আমার দোকান</h2>
             
             <!-- Login Form -->
             <div id="login-form">
                 <div class="mb-4 text-left">
-                    <label class="text-sm text-gray-600 mb-1 block lang-username">ইউজারনেম</label>
+                    <label class="text-sm text-gray-600 mb-1 block">ইউজারনেম</label>
                     <input type="text" id="auth-username" placeholder="আপনার ইউজারনেম লিখুন" class="w-full border p-3 rounded-lg touch-target">
                 </div>
                 <div class="mb-4 text-left">
-                    <label class="text-sm text-gray-600 mb-1 block lang-password">পাসওয়ার্ড</label>
+                    <label class="text-sm text-gray-600 mb-1 block">পাসওয়ার্ড</label>
                     <input type="password" id="auth-pass" placeholder="********" class="w-full border p-3 rounded-lg touch-target">
                 </div>
                 <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-lg font-bold mb-4 touch-target hover:from-indigo-700 hover:to-purple-700 transition-all">
-                    <i class="fas fa-sign-in-alt mr-2"></i><span class="lang-login">লগইন করুন</span>
+                    <i class="fas fa-sign-in-alt mr-2"></i>লগইন করুন
                 </button>
-                <p class="text-sm text-gray-500"><span class="lang-no-account">দোকানের মালিক?</span> <a href="#" onclick="toggleAuthForms()" class="text-indigo-600 underline font-bold lang-register">রেজিস্ট্রেশন করুন</a></p>
+                <p class="text-sm text-gray-500">দোকানের মালিক? <a href="#" onclick="toggleAuthForms()" class="text-indigo-600 underline font-bold">রেজিস্ট্রেশন করুন</a></p>
             </div>
             
             <!-- Signup Form -->
             <div id="signup-form" class="hidden">
                 <div class="bg-indigo-50 p-3 rounded-lg mb-4">
-                    <p class="text-sm text-indigo-600 font-bold lang-only-owner">শুধুমাত্র দোকানের মালিকদের জন্য</p>
+                    <p class="text-sm text-indigo-600 font-bold">শুধুমাত্র দোকানের মালিকদের জন্য</p>
                 </div>
                 <div class="mb-4 text-left">
-                    <label class="text-sm text-gray-600 mb-1 block lang-username">ইউজারনেম</label>
+                    <label class="text-sm text-gray-600 mb-1 block">ইউজারনেম</label>
                     <input type="text" id="reg-username" placeholder="৩ অক্ষরের বেশি" class="w-full border p-3 rounded-lg touch-target">
                 </div>
                 <div class="mb-4 text-left">
-                    <label class="text-sm text-gray-600 mb-1 block lang-password">পাসওয়ার্ড</label>
+                    <label class="text-sm text-gray-600 mb-1 block">পাসওয়ার্ড</label>
                     <input type="password" id="reg-pass" placeholder="৪ অক্ষরের বেশি" class="w-full border p-3 rounded-lg touch-target">
                 </div>
                 <div class="mb-4 text-left">
-                    <label class="text-sm text-gray-600 mb-1 block lang-shop-name">দোকানের নাম</label>
+                    <label class="text-sm text-gray-600 mb-1 block">দোকানের নাম</label>
                     <input type="text" id="reg-shop-name" placeholder="যেমন: রহিম স্টোর" class="w-full border p-3 rounded-lg touch-target">
                 </div>
                 <div class="mb-4 text-left">
-                    <label class="text-sm text-gray-600 mb-1 block lang-phone">মোবাইল নাম্বার</label>
+                    <label class="text-sm text-gray-600 mb-1 block">মোবাইল নাম্বার</label>
                     <input type="text" id="reg-phone" placeholder="০১৭XXXXXXXX" class="w-full border p-3 rounded-lg touch-target">
                 </div>
                 <button onclick="handleOwnerSignup()" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-bold mb-4 touch-target hover:from-green-700 hover:to-emerald-700 transition-all">
-                    <i class="fas fa-user-plus mr-2"></i><span class="lang-register-complete">রেজিস্ট্রেশন সম্পন্ন করুন</span>
+                    <i class="fas fa-user-plus mr-2"></i>রেজিস্ট্রেশন সম্পন্ন করুন
                 </button>
-                <p class="text-sm text-gray-500"><span class="lang-have-account">ইতিমধ্যে অ্যাকাউন্ট আছে?</span> <a href="#" onclick="toggleAuthForms()" class="text-indigo-600 underline font-bold lang-login-link">লগইন করুন</a></p>
+                <p class="text-sm text-gray-500">ইতিমধ্যে অ্যাকাউন্ট আছে? <a href="#" onclick="toggleAuthForms()" class="text-indigo-600 underline font-bold">লগইন করুন</a></p>
             </div>
         </div>
     </div>
@@ -678,12 +554,12 @@
     <div id="adminApprovalModal" class="modal">
         <div class="bg-white rounded-lg w-11/12 md:w-2/3 p-4 md:p-6 shadow-xl modal-content">
             <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h2 class="text-xl font-bold text-indigo-600 lang-pending-owners">👥 পেন্ডিং দোকান মালিক</h2>
+                <h2 class="text-xl font-bold text-indigo-600">👥 পেন্ডিং দোকান মালিক</h2>
                 <button onclick="closeModal('adminApprovalModal')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
             </div>
             <div id="pending-users-list" class="space-y-3 overflow-y-auto max-h-[60vh]"></div>
             <div class="flex justify-end gap-3 mt-6">
-                <button onclick="closeModal('adminApprovalModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target lang-close">বন্ধ করুন</button>
+                <button onclick="closeModal('adminApprovalModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target">বন্ধ করুন</button>
             </div>
         </div>
     </div>
@@ -692,7 +568,7 @@
     <div id="permissionEditModal" class="modal">
         <div class="bg-white rounded-lg w-11/12 md:w-1/2 p-4 md:p-6 shadow-xl modal-content">
             <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h2 class="text-xl font-bold text-purple-600 lang-edit-permission">✏️ স্টাফ পার্মিশন এডিট</h2>
+                <h2 class="text-xl font-bold text-purple-600">✏️ স্টাফ পার্মিশন এডিট</h2>
                 <button onclick="closeModal('permissionEditModal')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
             </div>
             
@@ -701,57 +577,57 @@
             <div class="space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
-                        <label class="text-sm text-gray-600 mb-1 block lang-staff-username">স্টাফ ইউজারনেম</label>
+                        <label class="text-sm text-gray-600 mb-1 block">স্টাফ ইউজারনেম</label>
                         <input type="text" id="edit-staff-username-display" class="w-full border p-2 rounded bg-gray-100" readonly>
                     </div>
                     <div>
-                        <label class="text-sm text-gray-600 mb-1 block lang-staff-name">স্টাফের নাম</label>
+                        <label class="text-sm text-gray-600 mb-1 block">স্টাফের নাম</label>
                         <input type="text" id="edit-staff-name" class="w-full border p-2 rounded">
                     </div>
                     <div>
-                        <label class="text-sm text-gray-600 mb-1 block lang-staff-phone">মোবাইল নাম্বার</label>
+                        <label class="text-sm text-gray-600 mb-1 block">মোবাইল নাম্বার</label>
                         <input type="text" id="edit-staff-phone" class="w-full border p-2 rounded">
                     </div>
                 </div>
                 
                 <div class="mt-4">
-                    <h4 class="font-bold text-sm mb-3 lang-set-permissions">পার্মিশন সেট করুন:</h4>
+                    <h4 class="font-bold text-sm mb-3">পার্মিশন সেট করুন:</h4>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                         <label class="flex items-center space-x-2 text-sm p-2 bg-gray-50 rounded hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" id="edit-perm-pos" class="rounded"> <span class="lang-pos">POS বিক্রি</span>
+                            <input type="checkbox" id="edit-perm-pos" class="rounded"> <span>POS বিক্রি</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm p-2 bg-gray-50 rounded hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" id="edit-perm-product-list" class="rounded"> <span class="lang-product-list">প্রোডাক্ট লিস্ট</span>
+                            <input type="checkbox" id="edit-perm-product-list" class="rounded"> <span>প্রোডাক্ট লিস্ট</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm p-2 bg-gray-50 rounded hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" id="edit-perm-due-collection" class="rounded"> <span class="lang-due-collection">বাকি আদায়</span>
+                            <input type="checkbox" id="edit-perm-due-collection" class="rounded"> <span>বাকি আদায়</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm p-2 bg-gray-50 rounded hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" id="edit-perm-return" class="rounded"> <span class="lang-return">রিটার্ন</span>
+                            <input type="checkbox" id="edit-perm-return" class="rounded"> <span>রিটার্ন</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm p-2 bg-gray-50 rounded hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" id="edit-perm-daily-closing" class="rounded"> <span class="lang-daily-closing">ডেইলি ক্লোজিং</span>
+                            <input type="checkbox" id="edit-perm-daily-closing" class="rounded"> <span>ডেইলি ক্লোজিং</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm p-2 bg-gray-50 rounded hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" id="edit-perm-customer-view" class="rounded"> <span class="lang-customer-view">কাস্টমার দেখা</span>
+                            <input type="checkbox" id="edit-perm-customer-view" class="rounded"> <span>কাস্টমার দেখা</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm p-2 bg-gray-50 rounded hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" id="edit-perm-product-add" class="rounded"> <span class="lang-product-add">প্রোডাক্ট এড</span>
+                            <input type="checkbox" id="edit-perm-product-add" class="rounded"> <span>প্রোডাক্ট এড</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm p-2 bg-gray-50 rounded hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" id="edit-perm-product-edit" class="rounded"> <span class="lang-product-edit">প্রোডাক্ট এডিট</span>
+                            <input type="checkbox" id="edit-perm-product-edit" class="rounded"> <span>প্রোডাক্ট এডিট</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm p-2 bg-gray-50 rounded hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" id="edit-perm-expense-view" class="rounded"> <span class="lang-expense-view">খরচ দেখা</span>
+                            <input type="checkbox" id="edit-perm-expense-view" class="rounded"> <span>খরচ দেখা</span>
                         </label>
                     </div>
                 </div>
             </div>
             
             <div class="flex justify-end gap-3 mt-6">
-                <button onclick="closeModal('permissionEditModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target lang-cancel">বাতিল</button>
+                <button onclick="closeModal('permissionEditModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target">বাতিল</button>
                 <button onclick="saveStaffPermissions()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-all touch-target">
-                    <i class="fas fa-save mr-2"></i><span class="lang-save">সংরক্ষণ করুন</span>
+                    <i class="fas fa-save mr-2"></i>সংরক্ষণ করুন
                 </button>
             </div>
         </div>
@@ -761,13 +637,13 @@
     <div id="staffManagementModal" class="modal">
         <div class="bg-white rounded-lg w-11/12 md:w-2/3 p-4 md:p-6 shadow-xl modal-content">
             <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h2 class="text-xl font-bold text-purple-600 lang-staff-management">👥 স্টাফ ম্যানেজমেন্ট</h2>
+                <h2 class="text-xl font-bold text-purple-600">👥 স্টাফ ম্যানেজমেন্ট</h2>
                 <button onclick="closeModal('staffManagementModal')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
             </div>
             
             <!-- Add New Staff -->
             <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-lg mb-6">
-                <h3 class="font-bold mb-3 text-purple-700 lang-add-new-staff">➕ নতুন স্টাফ যোগ করুন</h3>
+                <h3 class="font-bold mb-3 text-purple-700">➕ নতুন স্টাফ যোগ করুন</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <input type="text" id="staff-username" placeholder="স্টাফ ইউজারনেম" class="border p-2 rounded touch-target">
                     <input type="password" id="staff-password" placeholder="স্টাফ পাসওয়ার্ড" class="border p-2 rounded touch-target">
@@ -776,329 +652,616 @@
                 </div>
                 
                 <div class="mt-4">
-                    <h4 class="font-bold text-sm mb-2 lang-set-permissions">পার্মিশন সেট করুন:</h4>
+                    <h4 class="font-bold text-sm mb-2">পার্মিশন সেট করুন:</h4>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
                         <label class="flex items-center space-x-2 text-sm bg-white p-2 rounded cursor-pointer hover:bg-gray-50">
-                            <input type="checkbox" id="perm-pos" checked class="rounded"> <span class="lang-pos">POS বিক্রি</span>
+                            <input type="checkbox" id="perm-pos" checked class="rounded"> <span>POS বিক্রি</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm bg-white p-2 rounded cursor-pointer hover:bg-gray-50">
-                            <input type="checkbox" id="perm-product-list" checked class="rounded"> <span class="lang-product-list">প্রোডাক্ট লিস্ট</span>
+                            <input type="checkbox" id="perm-product-list" checked class="rounded"> <span>প্রোডাক্ট লিস্ট</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm bg-white p-2 rounded cursor-pointer hover:bg-gray-50">
-                            <input type="checkbox" id="perm-due-collection" checked class="rounded"> <span class="lang-due-collection">বাকি আদায়</span>
+                            <input type="checkbox" id="perm-due-collection" checked class="rounded"> <span>বাকি আদায়</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm bg-white p-2 rounded cursor-pointer hover:bg-gray-50">
-                            <input type="checkbox" id="perm-return" checked class="rounded"> <span class="lang-return">রিটার্ন</span>
+                            <input type="checkbox" id="perm-return" checked class="rounded"> <span>রিটার্ন</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm bg-white p-2 rounded cursor-pointer hover:bg-gray-50">
-                            <input type="checkbox" id="perm-daily-closing" class="rounded"> <span class="lang-daily-closing">ডেইলি ক্লোজিং</span>
+                            <input type="checkbox" id="perm-daily-closing" class="rounded"> <span>ডেইলি ক্লোজিং</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm bg-white p-2 rounded cursor-pointer hover:bg-gray-50">
-                            <input type="checkbox" id="perm-customer-view" class="rounded"> <span class="lang-customer-view">কাস্টমার দেখা</span>
+                            <input type="checkbox" id="perm-customer-view" class="rounded"> <span>কাস্টমার দেখা</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm bg-white p-2 rounded cursor-pointer hover:bg-gray-50">
-                            <input type="checkbox" id="perm-product-add" class="rounded"> <span class="lang-product-add">প্রোডাক্ট এড</span>
+                            <input type="checkbox" id="perm-product-add" class="rounded"> <span>প্রোডাক্ট এড</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm bg-white p-2 rounded cursor-pointer hover:bg-gray-50">
-                            <input type="checkbox" id="perm-product-edit" class="rounded"> <span class="lang-product-edit">প্রোডাক্ট এডিট</span>
+                            <input type="checkbox" id="perm-product-edit" class="rounded"> <span>প্রোডাক্ট এডিট</span>
                         </label>
                         <label class="flex items-center space-x-2 text-sm bg-white p-2 rounded cursor-pointer hover:bg-gray-50">
-                            <input type="checkbox" id="perm-expense-view" class="rounded"> <span class="lang-expense-view">খরচ দেখা</span>
+                            <input type="checkbox" id="perm-expense-view" class="rounded"> <span>খরচ দেখা</span>
                         </label>
                     </div>
                 </div>
                 
                 <button onclick="addStaff()" class="mt-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-2 rounded-lg font-bold hover:from-purple-700 hover:to-indigo-700 transition-all touch-target">
-                    <i class="fas fa-user-plus mr-2"></i><span class="lang-create-staff">স্টাফ তৈরি করুন</span>
+                    <i class="fas fa-user-plus mr-2"></i>স্টাফ তৈরি করুন
                 </button>
             </div>
             
             <!-- Staff List -->
-            <h3 class="font-bold mb-3 text-gray-700 lang-staff-list">📋 স্টাফ লিস্ট</h3>
+            <h3 class="font-bold mb-3 text-gray-700">📋 স্টাফ লিস্ট</h3>
             <div id="staff-list" class="space-y-3 mb-6 overflow-y-auto max-h-[40vh]"></div>
             
             <div class="flex justify-end gap-3 mt-6">
-                <button onclick="closeModal('staffManagementModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target lang-close">বন্ধ করুন</button>
+                <button onclick="closeModal('staffManagementModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target">বন্ধ করুন</button>
             </div>
         </div>
     </div>
 
-    <!-- Branch Management Modal -->
-    <div id="branchManagementModal" class="modal">
-        <div class="bg-white rounded-lg w-11/12 md:w-2/3 p-4 md:p-6 shadow-xl modal-content">
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h2 class="text-xl font-bold text-green-600 lang-branch-management-title">🏢 শাখা ম্যানেজমেন্ট</h2>
-                <button onclick="closeModal('branchManagementModal')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-            </div>
-            
-            <!-- Add New Branch -->
-            <div class="bg-green-50 p-4 rounded-lg mb-6">
-                <h3 class="font-bold mb-3 text-green-700 lang-add-branch">➕ নতুন শাখা যোগ করুন</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <input type="text" id="branch-name" placeholder="শাখার নাম" class="border p-2 rounded touch-target">
-                    <input type="text" id="branch-location" placeholder="ঠিকানা" class="border p-2 rounded touch-target">
-                    <input type="text" id="branch-phone" placeholder="ফোন নাম্বার" class="border p-2 rounded touch-target">
-                </div>
-                <button onclick="addBranch()" class="mt-4 bg-green-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-green-700 transition-all touch-target">
-                    <i class="fas fa-plus-circle mr-2"></i><span class="lang-add-branch-btn">শাখা যোগ করুন</span>
+    <!-- Main App Content -->
+    <div id="app-content" class="hidden">
+        <!-- Mobile Header -->
+        <div class="md:hidden bg-gradient-to-r from-indigo-900 to-purple-900 text-white p-3 flex justify-between items-center sticky top-0 z-[100] shadow-lg">
+            <h2 class="text-lg font-bold flex items-center gap-2">
+                <i class="fas fa-store"></i> 
+                <span class="shop-name-display truncate max-w-[150px]">আমার দোকান</span>
+            </h2>
+            <div class="flex gap-2 items-center">
+                <span id="current-username-mobile" class="text-xs bg-indigo-700 px-2 py-1 rounded-full"></span>
+                <span id="user-role-badge-mobile" class="text-xs px-2 py-1 rounded-full"></span>
+                <button onclick="toggleDarkMode()" class="text-lg p-2 touch-target hover:bg-indigo-800 rounded-full transition-all">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleMobileMenu()" class="text-xl p-2 touch-target hover:bg-indigo-800 rounded-full transition-all">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
-            
-            <!-- Branch List -->
-            <h3 class="font-bold mb-3 text-gray-700 lang-branch-list">📋 শাখা লিস্ট</h3>
-            <div id="branch-list" class="space-y-3 mb-6 overflow-y-auto max-h-[40vh]"></div>
-            
-            <div class="flex justify-end gap-3 mt-6">
-                <button onclick="closeModal('branchManagementModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target lang-close">বন্ধ করুন</button>
-            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row min-h-screen">
+            <!-- Sidebar -->
+            <aside id="sidebar" class="w-full md:w-64 bg-gradient-to-b from-indigo-900 to-purple-900 text-white p-4 md:p-6 hidden md:block fixed md:relative h-full z-[90] overflow-y-auto transition-all duration-300">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-store text-white text-3xl"></i>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold shop-name-display">আমার দোকান</h2>
+                </div>
+                
+                <div class="mb-4 p-3 bg-white/10 rounded-lg text-center backdrop-blur-sm">
+                    <div><span id="current-username-sidebar" class="font-bold text-sm md:text-base"></span></div>
+                    <div><span id="user-role-badge-sidebar" class="text-xs mt-1 inline-block"></span></div>
+                </div>
+                
+                <nav class="space-y-1 md:space-y-2">
+                    <!-- Dashboard -->
+                    <a href="#" onclick="event.preventDefault(); closeMobileMenu();" class="block py-3 px-4 rounded-lg transition bg-white/20 text-sm md:text-base touch-target hover:bg-white/30">
+                        <i class="fas fa-home mr-2"></i> ড্যাশবোর্ড
+                    </a>
+                    
+                    <!-- Owner Only Sections -->
+                    <div id="owner-menu-items" class="owner-only space-y-1">
+                        <a href="#" onclick="event.preventDefault(); openModal('productModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-white/20 text-sm md:text-base touch-target">
+                            <i class="fas fa-box mr-2"></i> প্রোডাক্ট এড
+                        </a>
+                        <a href="#" onclick="event.preventDefault(); openModal('bulkBarcodeModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-white/20 text-sm md:text-base touch-target">
+                            <i class="fas fa-print mr-2"></i> বাল্ক বারকোড
+                        </a>
+                        <a href="#" onclick="event.preventDefault(); openModal('supplierModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-white/20 text-sm md:text-base touch-target">
+                            <i class="fas fa-truck mr-2"></i> সাপ্লাইয়ার
+                        </a>
+                        <a href="#" onclick="event.preventDefault(); openModal('stockHistoryModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-white/20 text-sm md:text-base touch-target">
+                            <i class="fas fa-history mr-2"></i> স্টক হিস্ট্রি
+                        </a>
+                        <a href="#" onclick="event.preventDefault(); openModal('expenseModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-red-400/20 text-sm md:text-base touch-target">
+                            <i class="fas fa-minus-circle mr-2"></i> খরচ এড
+                        </a>
+                        <a href="#" onclick="event.preventDefault(); openModal('profitReportModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-white/20 text-sm md:text-base touch-target">
+                            <i class="fas fa-chart-line mr-2"></i> প্রফিট রিপোর্ট
+                        </a>
+                        <a href="#" onclick="event.preventDefault(); openModal('settingsModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-white/20 text-sm md:text-base touch-target">
+                            <i class="fas fa-cog mr-2"></i> সেটিংস
+                        </a>
+                        <a href="#" onclick="event.preventDefault(); openModal('staffManagementModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-purple-600 text-sm md:text-base touch-target">
+                            <i class="fas fa-users-cog mr-2"></i> স্টাফ ম্যানেজমেন্ট
+                        </a>
+                    </div>
+                    
+                    <!-- Common Sections -->
+                    <a href="#" onclick="event.preventDefault(); openModal('productListModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-white/20 text-sm md:text-base touch-target" id="menu-product-list">
+                        <i class="fas fa-list mr-2"></i> প্রোডাক্ট লিস্ট
+                    </a>
+                    <a href="#" onclick="event.preventDefault(); openModal('dueCollectionModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-yellow-600 text-sm md:text-base touch-target" id="menu-due-collection">
+                        <i class="fas fa-hand-holding-usd mr-2"></i> বাকি আদায়
+                    </a>
+                    <a href="#" onclick="event.preventDefault(); openModal('returnModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-orange-600 text-sm md:text-base touch-target" id="menu-return">
+                        <i class="fas fa-undo mr-2"></i> সেলস রিটার্ন
+                    </a>
+                    <a href="#" onclick="event.preventDefault(); openModal('posModal'); closeMobileMenu();" class="block py-3 px-4 rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 mt-2 text-center font-bold text-sm md:text-base touch-target" id="menu-pos">
+                        <i class="fas fa-shopping-cart mr-2"></i> ওপেন POS (F2)
+                    </a>
+                    <a href="#" onclick="event.preventDefault(); dailyClosingReport(); closeMobileMenu();" class="block py-3 px-4 rounded-lg hover:bg-orange-600 text-sm md:text-base touch-target" id="menu-daily-closing">
+                        <i class="fas fa-file-invoice-dollar mr-2"></i> ডেইলি ক্লোজিং
+                    </a>
+                    
+                    <!-- Admin Only -->
+                    <a href="#" onclick="event.preventDefault(); openAdminApprovalModal();" class="block py-3 px-4 rounded-lg hover:bg-purple-600 admin-only relative text-sm md:text-base touch-target">
+                        <i class="fas fa-users mr-2"></i> ইউজার এপ্রুভাল
+                        <span id="pending-badge" class="absolute right-2 top-1/2 -translate-y-1/2 hidden pending-badge">new</span>
+                    </a>
+                    
+                    <!-- Owner Only - Backup -->
+                    <a href="#" onclick="event.preventDefault(); exportData();" class="block py-3 px-4 rounded-lg hover:bg-white/20 owner-only text-sm md:text-base touch-target">
+                        <i class="fas fa-file-export mr-2"></i> ব্যাকআপ
+                    </a>
+                    
+                    <!-- Logout & Dark Mode -->
+                    <button onclick="handleLogout()" class="w-full text-left py-3 px-4 rounded-lg hover:bg-red-600 text-red-300 hover:text-white mt-2 text-sm md:text-base touch-target transition-all">
+                        <i class="fas fa-sign-out-alt mr-2"></i> লগআউট
+                    </button>
+                    <button onclick="toggleDarkMode()" class="w-full text-left py-3 px-4 rounded-lg hover:bg-white/20 text-sm md:text-base touch-target transition-all">
+                        <i class="fas fa-adjust mr-2"></i> ডার্ক মোড
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-1 p-3 md:p-8 w-full bg-gray-50">
+                <!-- Desktop Header -->
+                <header class="hidden md:flex justify-between items-center mb-8 bg-white p-4 rounded-xl shadow-sm">
+                    <h1 class="text-xl md:text-2xl font-bold text-gray-800">
+                        <i class="fas fa-tachometer-alt text-indigo-600 mr-2"></i>
+                        ড্যাশবোর্ড
+                    </h1>
+                    <div class="flex items-center gap-4">
+                        <span class="text-gray-600 hidden sm:block" id="current-date"></span>
+                        <span class="text-sm font-bold text-indigo-600 hidden sm:block" id="current-username-header"></span>
+                        <span class="text-xs hidden sm:block" id="user-role-badge-header"></span>
+                        <button onclick="clearAllData()" class="text-xs text-red-500 underline hover:text-red-700 owner-only" id="reset-data-btn">রিসেট ডাটা</button>
+                        <div class="w-10 h-10 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-6 stats-grid">
+                    <div class="bg-white p-3 md:p-6 rounded-xl shadow-sm border-l-4 border-blue-500 hover:shadow-lg transition-all">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs md:text-sm text-gray-500">মোট বিক্রি</p>
+                                <h3 id="stat-sales" class="text-lg md:text-2xl font-bold text-gray-800">৳ ০</h3>
+                            </div>
+                            <i class="fas fa-shopping-cart text-blue-200 text-xl md:text-3xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-3 md:p-6 rounded-xl shadow-sm border-l-4 border-green-500 owner-only hover:shadow-lg transition-all">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs md:text-sm text-gray-500">মোট লাভ</p>
+                                <h3 id="stat-profit" class="text-lg md:text-2xl font-bold text-gray-800">৳ ০</h3>
+                            </div>
+                            <i class="fas fa-hand-holding-usd text-green-200 text-xl md:text-3xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-3 md:p-6 rounded-xl shadow-sm border-l-4 border-red-500 owner-only hover:shadow-lg transition-all">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs md:text-sm text-gray-500">মোট খরচ</p>
+                                <h3 id="stat-expense" class="text-lg md:text-2xl font-bold text-gray-800">৳ ০</h3>
+                            </div>
+                            <i class="fas fa-money-bill-wave text-red-200 text-xl md:text-3xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-3 md:p-6 rounded-xl shadow-sm border-l-4 border-purple-500 owner-only hover:shadow-lg transition-all">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs md:text-sm text-gray-500">নিট লাভ</p>
+                                <h3 id="stat-net-profit" class="text-lg md:text-2xl font-bold text-gray-800">৳ ০</h3>
+                            </div>
+                            <i class="fas fa-wallet text-purple-200 text-xl md:text-3xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-3 md:p-6 rounded-xl shadow-sm border-l-4 border-yellow-500 hover:shadow-lg transition-all">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs md:text-sm text-gray-500">বাকি</p>
+                                <h3 id="stat-due" class="text-lg md:text-2xl font-bold text-gray-800">৳ ০</h3>
+                            </div>
+                            <i class="fas fa-user-clock text-yellow-200 text-xl md:text-3xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-3 md:p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 owner-only hover:shadow-lg transition-all">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs md:text-sm text-gray-500">স্টক মূল্য</p>
+                                <h3 id="stat-stock" class="text-lg md:text-2xl font-bold text-gray-800">৳ ০</h3>
+                            </div>
+                            <i class="fas fa-boxes text-indigo-200 text-xl md:text-3xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts (Owner Only) -->
+                <div class="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8 owner-only">
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold mb-4 text-gray-700">বিক্রির গ্রাফ (গত ৭ দিন)</h3>
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold mb-4 text-gray-700">বেস্ট সেলিং প্রোডাক্ট</h3>
+                        <canvas id="topProductsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Alerts -->
+                <div id="low-stock-alert" class="mt-4 md:mt-6 hidden bg-red-100 border-l-4 border-red-500 text-red-700 p-3 md:p-4 rounded text-sm animate-pulse" role="alert">
+                    <p class="font-bold"><i class="fas fa-exclamation-triangle mr-2"></i>স্টক এলার্ট!</p>
+                    <div id="low-stock-items" class="text-xs md:text-sm list-disc pl-5 mt-2"></div>
+                </div>
+
+                <div id="expiry-alert" class="mt-4 hidden bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-3 md:p-4 rounded text-sm animate-pulse" role="alert">
+                    <p class="font-bold"><i class="fas fa-calendar-times mr-2"></i>মেয়াদ শেষ হওয়ার পথে!</p>
+                    <div id="expiry-items" class="text-xs md:text-sm list-disc pl-5 mt-2"></div>
+                </div>
+
+                <!-- Recent Sales -->
+                <div class="mt-6 md:mt-10 bg-white p-3 md:p-6 rounded-xl shadow-sm overflow-x-auto">
+                    <h3 class="text-base md:text-lg font-bold mb-4 text-gray-800">
+                        <i class="fas fa-history text-indigo-600 mr-2"></i>
+                        সাম্প্রতিক বিক্রি
+                    </h3>
+                    <div class="overflow-x-auto -mx-3 md:mx-0">
+                        <table class="w-full text-left min-w-[500px] md:min-w-full">
+                            <thead>
+                                <tr class="text-gray-400 border-b text-xs md:text-sm">
+                                    <th class="pb-3 font-medium">ইনভয়েস</th>
+                                    <th class="pb-3 font-medium">কাস্টমার</th>
+                                    <th class="pb-3 font-medium">পরিমাণ</th>
+                                    <th class="pb-3 font-medium">অবস্থা</th>
+                                    <th class="pb-3 font-medium">বিক্রেতা</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-sales-body" class="text-gray-600 text-xs md:text-sm"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
 
-    <!-- Cloud Backup Modal -->
-    <div id="backupModal" class="modal">
-        <div class="bg-white rounded-lg w-11/12 md:w-1/2 p-4 md:p-6 shadow-xl modal-content">
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h2 class="text-xl font-bold text-blue-600 lang-cloud-backup-title">☁️ ক্লাউড ব্যাকআপ</h2>
-                <button onclick="closeModal('backupModal')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-            </div>
-            
+    <!-- All Modals -->
+    <div id="bulkBarcodeModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/2 p-6 shadow-xl modal-content">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2 text-indigo-600">বাল্ক বারকোড জেনারেটর</h2>
             <div class="space-y-4">
-                <!-- Google Drive Backup -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h3 class="font-bold mb-3 flex items-center">
-                        <i class="fab fa-google-drive text-blue-500 mr-2"></i> Google Drive
-                    </h3>
-                    <button onclick="backupToGoogleDrive()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all touch-target w-full mb-2">
-                        <i class="fas fa-upload mr-2"></i><span class="lang-backup-to-drive">Google Drive এ ব্যাকআপ</span>
-                    </button>
-                    <button onclick="restoreFromGoogleDrive()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-all touch-target w-full">
-                        <i class="fas fa-download mr-2"></i><span class="lang-restore-from-drive">Google Drive থেকে রিস্টোর</span>
-                    </button>
-                </div>
-                
-                <!-- Dropbox Backup -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h3 class="font-bold mb-3 flex items-center">
-                        <i class="fab fa-dropbox text-blue-500 mr-2"></i> Dropbox
-                    </h3>
-                    <button onclick="backupToDropbox()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all touch-target w-full mb-2">
-                        <i class="fas fa-upload mr-2"></i><span class="lang-backup-to-dropbox">Dropbox এ ব্যাকআপ</span>
-                    </button>
-                    <button onclick="restoreFromDropbox()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-all touch-target w-full">
-                        <i class="fas fa-download mr-2"></i><span class="lang-restore-from-dropbox">Dropbox থেকে রিস্টোর</span>
-                    </button>
-                </div>
-                
-                <!-- Auto Backup Schedule -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h3 class="font-bold mb-3 lang-auto-backup">🔄 অটো ব্যাকআপ শিডিউল</h3>
-                    <select id="backup-schedule" class="w-full border p-2 rounded mb-2">
-                        <option value="daily">প্রতিদিন</option>
-                        <option value="weekly">প্রতি সপ্তাহে</option>
-                        <option value="monthly">প্রতি মাসে</option>
-                        <option value="yearly">প্রতি বছরে</option>
+                <div>
+                    <label class="text-sm text-gray-500">প্রোডাক্ট সিলেক্ট করুন</label>
+                    <select id="bulk-p-select" class="w-full border p-2 rounded">
+                        <option value="">সিলেক্ট করুন...</option>
                     </select>
-                    <button onclick="setAutoBackup()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-all touch-target w-full">
-                        <i class="fas fa-clock mr-2"></i><span class="lang-set-schedule">শিডিউল সেট করুন</span>
-                    </button>
                 </div>
-                
-                <!-- Multi-device Sync -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h3 class="font-bold mb-3">📱 মাল্টি ডিভাইস সিঙ্ক</h3>
-                    <div class="flex items-center justify-between mb-2">
-                        <span>এই ডিভাইস</span>
-                        <span class="text-green-600"><i class="fas fa-check-circle"></i> সক্রিয়</span>
-                    </div>
-                    <div class="flex items-center justify-between mb-2">
-                        <span>অন্য ডিভাইস</span>
-                        <span class="text-gray-500">০ সংযুক্ত</span>
-                    </div>
-                    <button onclick="syncDevices()" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-all touch-target w-full">
-                        <i class="fas fa-sync mr-2"></i> এখন সিঙ্ক করুন
-                    </button>
+                <div>
+                    <label class="text-sm text-gray-500">কতগুলো স্টিকার প্রিন্ট করবেন?</label>
+                    <input type="number" id="bulk-p-qty" value="1" min="1" class="w-full border p-2 rounded">
                 </div>
-                
-                <!-- Data Recovery -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h3 class="font-bold mb-3">💾 ডাটা রিকভারি</h3>
-                    <button onclick="showRecoveryPoints()" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-all touch-target w-full">
-                        <i class="fas fa-history mr-2"></i> রিকভারি পয়েন্ট দেখুন
-                    </button>
-                </div>
+                <button onclick="generateBulkBarcodes()" class="w-full bg-indigo-600 text-white py-2 rounded font-bold">প্রিন্ট প্রিভিউ জেনারেট করুন</button>
             </div>
-            
-            <div class="flex justify-end gap-3 mt-6">
-                <button onclick="closeModal('backupModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target lang-close">বন্ধ করুন</button>
+            <div class="flex justify-end mt-6">
+                <button onclick="closeModal('bulkBarcodeModal')" class="bg-gray-400 text-white px-4 py-2 rounded">বন্ধ করুন</button>
             </div>
         </div>
     </div>
 
-    <!-- Advanced Inventory Modal -->
-    <div id="inventoryModal" class="modal">
-        <div class="bg-white rounded-lg w-11/12 md:w-2/3 p-4 md:p-6 shadow-xl modal-content">
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h2 class="text-xl font-bold text-cyan-600">📊 অ্যাডভান্সড ইনভেন্টরি</h2>
-                <button onclick="closeModal('inventoryModal')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-            </div>
-            
-            <!-- Batch/Lot Tracking -->
-            <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                <h3 class="font-bold mb-3">🔖 ব্যাচ/লট ট্র্যাকিং</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <input type="text" id="batch-search" placeholder="ব্যাচ নাম্বার খুঁজুন" class="border p-2 rounded">
-                    <button onclick="searchBatch()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">খুঁজুন</button>
+    <div id="returnModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/2 p-6 shadow-xl modal-content">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2 text-orange-600">সেলস রিটার্ন / আইটেম ফেরত</h2>
+            <div class="space-y-4">
+                <div class="flex gap-2">
+                    <input type="text" id="return-inv-input" placeholder="ইনভয়েস নং (যেমন: INV-001)" class="flex-1 border p-2 rounded">
+                    <button onclick="findInvoiceForReturn()" class="bg-orange-600 text-white px-4 py-2 rounded">আইটেম খুঁজুন</button>
                 </div>
-                <div id="batch-results" class="mt-3 max-h-40 overflow-y-auto"></div>
+                <div id="return-items-area" class="max-h-80 overflow-y-auto space-y-2"></div>
             </div>
-            
-            <!-- Serial Number Tracking -->
-            <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                <h3 class="font-bold mb-3">🔢 সিরিয়াল নাম্বার ট্র্যাকিং</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <input type="text" id="serial-search" placeholder="সিরিয়াল নাম্বার খুঁজুন" class="border p-2 rounded">
-                    <button onclick="searchSerial()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">খুঁজুন</button>
-                </div>
-                <div id="serial-results" class="mt-3 max-h-40 overflow-y-auto"></div>
-            </div>
-            
-            <!-- Warehouse Management -->
-            <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                <h3 class="font-bold mb-3">🏭 ওয়ারহাউস ম্যানেজমেন্ট</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <input type="text" id="warehouse-name" placeholder="ওয়ারহাউসের নাম" class="border p-2 rounded">
-                    <input type="text" id="warehouse-location" placeholder="অবস্থান" class="border p-2 rounded">
-                </div>
-                <button onclick="addWarehouse()" class="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-                    <i class="fas fa-plus mr-1"></i> ওয়ারহাউস যোগ করুন
-                </button>
-                <div id="warehouse-list" class="mt-3 max-h-40 overflow-y-auto"></div>
-            </div>
-            
-            <!-- Minimum Stock Alert & Auto PO -->
-            <div class="bg-gray-50 p-4 rounded-lg">
-                <h3 class="font-bold mb-3">⚠️ মিনিমাম স্টক অ্যালার্ট</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <input type="number" id="min-stock-threshold" placeholder="থ্রেশহোল্ড (যেমন: 5)" class="border p-2 rounded">
-                    <button onclick="setMinStockThreshold()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">সেট করুন</button>
-                </div>
-                <div id="low-stock-list" class="mt-3 max-h-40 overflow-y-auto"></div>
-                <button onclick="generateAutoPO()" class="mt-2 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 w-full">
-                    <i class="fas fa-file-invoice mr-1"></i> অটো পিও জেনারেট করুন
-                </button>
-            </div>
-            
-            <div class="flex justify-end gap-3 mt-6">
-                <button onclick="closeModal('inventoryModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target">বন্ধ করুন</button>
+            <div class="flex justify-end mt-6">
+                <button onclick="closeModal('returnModal')" class="bg-gray-400 text-white px-4 py-2 rounded">বন্ধ করুন</button>
             </div>
         </div>
     </div>
 
-    <!-- Advanced Reports Modal -->
-    <div id="advancedReportsModal" class="modal">
-        <div class="bg-white rounded-lg w-11/12 md:w-3/4 p-4 md:p-6 shadow-xl modal-content">
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h2 class="text-xl font-bold text-indigo-600">📈 অ্যাডভান্সড রিপোর্ট</h2>
-                <button onclick="closeModal('advancedReportsModal')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-            </div>
-            
-            <!-- Report Type Selector -->
+    <div id="supplierModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/2 p-6 shadow-xl modal-content">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2 text-indigo-600">সাপ্লাইয়ার ম্যানেজমেন্ট</h2>
             <div class="flex gap-2 mb-4">
-                <select id="report-type" class="border p-2 rounded">
-                    <option value="daily">দৈনিক রিপোর্ট</option>
-                    <option value="weekly">সাপ্তাহিক রিপোর্ট</option>
-                    <option value="monthly">মাসিক রিপোর্ট</option>
-                    <option value="yearly">বার্ষিক রিপোর্ট</option>
-                    <option value="custom">কাস্টম রিপোর্ট</option>
-                </select>
-                <input type="date" id="report-start-date" class="border p-2 rounded">
-                <input type="date" id="report-end-date" class="border p-2 rounded">
-                <button onclick="generateAdvancedReport()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">জেনারেট</button>
+                <input type="text" id="sup-name" placeholder="সাপ্লাইয়ারের নাম" class="flex-1 border p-2 rounded">
+                <input type="number" id="sup-due" placeholder="বাকি টাকা" class="flex-1 border p-2 rounded">
+                <button onclick="addSupplier()" class="bg-indigo-600 text-white px-4 py-2 rounded">এড</button>
             </div>
-            
-            <!-- Report Charts -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-                <div class="chart-container">
-                    <h3 class="font-bold mb-2">বিক্রি প্রবণতা</h3>
-                    <canvas id="trendChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <h3 class="font-bold mb-2">লাভ/লস বিশ্লেষণ</h3>
-                    <canvas id="profitLossAdvancedChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <h3 class="font-bold mb-2">ক্যাটাগরি ভিত্তিক বিক্রি</h3>
-                    <canvas id="categoryChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <h3 class="font-bold mb-2">শাখা ভিত্তিক বিক্রি</h3>
-                    <canvas id="branchChart"></canvas>
-                </div>
-            </div>
-            
-            <!-- Report Table -->
-            <div class="overflow-x-auto mb-4">
-                <table class="w-full border-collapse">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="p-2 border">তারিখ</th>
-                            <th class="p-2 border">বিক্রি</th>
-                            <th class="p-2 border">লাভ</th>
-                            <th class="p-2 border">খরচ</th>
-                            <th class="p-2 border">নিট</th>
-                        </tr>
-                    </thead>
-                    <tbody id="report-table-body"></tbody>
+            <div class="max-h-60 overflow-y-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead><tr class="bg-gray-100"><th class="p-2 text-xs">সাপ্লাইয়ার</th><th class="p-2 text-xs">বাকি (দেনা)</th><th class="p-2 text-xs">একশন</th></tr></thead>
+                    <tbody id="supplier-list-body"></tbody>
                 </table>
             </div>
-            
-            <!-- Export Options -->
-            <div class="flex gap-2 justify-end">
-                <button onclick="exportReportPDF()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                    <i class="fas fa-file-pdf mr-1"></i> PDF
-                </button>
-                <button onclick="exportReportExcel()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-                    <i class="fas fa-file-excel mr-1"></i> Excel
-                </button>
-                <button onclick="printReport()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                    <i class="fas fa-print mr-1"></i> প্রিন্ট
-                </button>
+            <div class="flex justify-end mt-6"><button onclick="closeModal('supplierModal')" class="bg-gray-400 text-white px-4 py-2 rounded">বন্ধ করুন</button></div>
+        </div>
+    </div>
+
+    <div id="settingsModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/3 p-6 shadow-xl modal-content">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">সিস্টেম সেটিংস</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="text-sm text-gray-500">দোকানের লোগো</label>
+                    <input type="file" id="conf-logo" accept="image/*" onchange="previewLogo(event)" class="w-full border p-1 rounded">
+                    <img id="logo-preview-img" src="" class="h-12 mt-2 hidden">
+                </div>
+                <div>
+                    <label class="text-sm text-gray-500">দোকানের নাম</label>
+                    <input type="text" id="conf-shop-name" class="w-full border p-2 rounded">
+                </div>
+                <div>
+                    <label class="text-sm text-gray-500">ভ্যাট হার (%)</label>
+                    <input type="number" id="conf-vat" class="w-full border p-2 rounded">
+                </div>
+                <div>
+                    <label class="text-sm text-gray-500">ইনভয়েস নোট</label>
+                    <textarea id="conf-note" class="w-full border p-2 rounded"></textarea>
+                </div>
             </div>
-            
             <div class="flex justify-end gap-3 mt-6">
-                <button onclick="closeModal('advancedReportsModal')" class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-all touch-target">বন্ধ করুন</button>
+                <button onclick="closeModal('settingsModal')" class="bg-gray-400 text-white px-4 py-2 rounded">বন্ধ</button>
+                <button onclick="saveSettings()" class="bg-indigo-600 text-white px-4 py-2 rounded">সেভ সেটিংস</button>
             </div>
         </div>
     </div>
 
-    <!-- Product Modal with Image Upload -->
-    <div id="productModal" class="modal">
-        <div class="bg-white rounded-lg w-11/12 md:w-1/3 p-6 shadow-xl modal-content">
-            <h2 id="productModalTitle" class="text-xl font-bold mb-4 border-b pb-2 lang-add-product-title">নতুন প্রোডাক্ট যোগ করুন</h2>
+    <div id="dueCollectionModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/2 p-6 shadow-xl modal-content">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2 text-yellow-600">বাকি টাকা আদায়</h2>
             <div class="space-y-4">
-                <input type="hidden" id="p-index">
-                
-                <!-- Product Images -->
-                <div>
-                    <label class="text-sm text-gray-500 mb-1 block lang-product-images">প্রোডাক্টের ছবি</label>
-                    <input type="file" id="p-images" accept="image/*" multiple onchange="previewProductImages(event)" class="w-full border p-1 rounded">
-                    <div id="product-image-gallery" class="image-gallery mt-2"></div>
+                <input type="text" id="due-search" onkeyup="searchDueRecords()" placeholder="কাস্টমারের নাম বা ফোন দিয়ে খুঁজুন..." class="w-full border p-2 rounded">
+                <div class="max-h-60 overflow-y-auto" id="due-records-list"></div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button onclick="closeModal('dueCollectionModal')" class="bg-gray-400 text-white px-4 py-2 rounded">বন্ধ করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="stockHistoryModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-2/3 p-6 shadow-xl max-h-[80vh] flex flex-col modal-content">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">স্টক ইন/আউট ইতিহাস</h2>
+            <div class="overflow-y-auto flex-1">
+                <table class="w-full text-left">
+                    <thead class="sticky top-0 bg-gray-100">
+                        <tr><th class="p-2">তারিখ</th><th class="p-2">প্রোডাক্ট</th><th class="p-2">ধরণ</th><th class="p-2">পরিমাণ</th></tr>
+                    </thead>
+                    <tbody id="stock-history-body"></tbody>
+                </table>
+            </div>
+            <button onclick="closeModal('stockHistoryModal')" class="mt-4 bg-gray-400 text-white px-4 py-2 rounded self-end">বন্ধ করুন</button>
+        </div>
+    </div>
+
+    <!-- POS Modal -->
+    <div id="posModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 h-5/6 p-4 md:p-6 shadow-xl flex flex-col modal-content">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h2 class="text-xl md:text-2xl font-bold text-indigo-800 italic">
+                    <i class="fas fa-calculator mr-2"></i> POS সিস্টেম
+                </h2>
+                <div class="flex gap-4">
+                    <div class="hidden md:flex items-center gap-2 bg-gray-100 px-3 py-1 rounded">
+                        <i class="fas fa-barcode text-gray-500"></i>
+                        <input type="text" id="barcode-input" placeholder="স্ক্যান করুন..." class="bg-transparent outline-none w-24 text-sm" onkeypress="handleBarcode(event)">
+                    </div>
+                    <button onclick="closeModal('posModal')" class="text-red-500 text-2xl font-bold hover:text-red-700 transition-all">&times;</button>
+                </div>
+            </div>
+            
+            <div class="pos-grid flex-1 overflow-hidden">
+                <!-- Products Grid -->
+                <div class="overflow-y-auto pr-0 md:pr-4">
+                    <input type="text" id="pos-search" onkeyup="filterPOSProducts()" placeholder="🔍 প্রোডাক্ট খুঁজুন..." class="w-full border p-3 mb-4 rounded-lg shadow-sm">
+                    <div id="pos-product-list" class="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4"></div>
                 </div>
                 
+                <!-- Cart -->
+                <div class="bg-gray-50 p-4 rounded-lg flex flex-col shadow-inner border mt-4 md:mt-0">
+                    <h3 class="font-bold border-b mb-3 pb-2 flex items-center justify-between">
+                        <span><i class="fas fa-shopping-cart text-indigo-600 mr-2"></i>কার্ট</span>
+                        <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded" id="cart-count">0 আইটেম</span>
+                    </h3>
+                    
+                    <div id="cart-items" class="flex-1 overflow-y-auto space-y-2 mb-4">
+                        <p class="text-gray-400 text-sm italic text-center py-5">কার্টে কোনো প্রোডাক্ট নেই</p>
+                    </div>
+                    
+                    <div class="border-t pt-3 space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span>সাব-টোটাল:</span>
+                            <span id="cart-subtotal" class="font-bold">৳ ০</span>
+                        </div>
+                        
+                        <div class="flex justify-between text-sm text-green-600">
+                            <span>ভ্যাট (<span id="vat-rate-label">0</span>%):</span>
+                            <span id="cart-vat" class="font-bold">৳ ০</span>
+                        </div>
+                        
+                        <div class="flex justify-between text-lg font-bold text-indigo-600">
+                            <span>মোট:</span>
+                            <span id="cart-total">৳ ০</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="text" id="pos-customer" placeholder="কাস্টমারের নাম" class="w-full text-sm border p-2 rounded" list="customer-list" onchange="checkCustomerStatus()">
+                            <datalist id="customer-list"></datalist>
+                            <input type="text" id="pos-customer-phone" placeholder="ফোন নাম্বার" class="w-full text-sm border p-2 rounded">
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="number" id="pos-discount" oninput="renderCart()" placeholder="ডিসকাউন্ট (৳)" class="w-full text-sm border p-2 rounded">
+                            <select id="pos-payment-method" class="w-full text-sm border p-2 rounded">
+                                <option value="Cash">💵 Cash (নগদ)</option>
+                                <option value="Bkash">📱 Bkash</option>
+                                <option value="Nagad">📱 Nagad</option>
+                                <option value="Bank">💳 Bank/Card</option>
+                            </select>
+                        </div>
+
+                        <div id="loyalty-info" class="text-xs text-indigo-600 font-bold bg-indigo-50 p-2 rounded">
+                            প্রাপ্ত লয়্যালটি পয়েন্ট: <span id="avail-points">0</span>
+                        </div>
+                        
+                        <input type="number" id="pos-paid" placeholder="পেইড টাকা" class="w-full text-sm border p-2 rounded">
+                        
+                        <button onclick="checkout()" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-bold hover:from-green-700 hover:to-emerald-700 transition-all">
+                            <i class="fas fa-check-circle mr-2"></i>বিক্রি সম্পন্ন করুন
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Preview Modal -->
+    <div id="invoicePreviewModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-[600px] p-6 shadow-xl relative modal-content">
+            <div class="flex justify-between border-b pb-2 mb-4 no-print">
+                <h3 class="font-bold">ইনভয়েস প্রিভিউ</h3>
+                <div class="flex gap-2">
+                    <button onclick="toggleInvoiceType('thermal')" id="btn-thermal" class="bg-indigo-600 text-white px-3 py-1 rounded text-xs">Thermal</button>
+                    <button onclick="toggleInvoiceType('a4')" id="btn-a4" class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">A4/A5</button>
+                </div>
+            </div>
+
+            <div id="print-section" class="p-4 bg-white text-black text-sm mx-auto w-[80mm]">
+                <div class="text-center mb-2">
+                    <img id="thermal-logo" src="" class="h-10 mx-auto mb-1 hidden">
+                    <h1 class="font-bold text-xl shop-name-display">আমার দোকান</h1>
+                    <p class="text-xs">ঠিকানা: আপনার দোকানের ঠিকানা এখানে</p>
+                    <p class="text-xs">ফোন: ০১৭XXXXXXXX</p>
+                </div>
+                <div class="border-t border-b border-black py-1 my-2 flex justify-between">
+                    <span>ক্যাশ মেমো</span>
+                    <span class="invoice-date-print"></span>
+                </div>
+                <div id="print-content"></div>
+                <div class="border-t border-black mt-2 pt-2 text-[10px]">
+                    <p class="invoice-note italic"></p>
+                </div>
+                <div class="mt-4 flex flex-col items-center">
+                    <img class="invoice-qr w-20 h-20 mb-1" src="">
+                </div>
+                <p class="text-center mt-4 text-xs italic">ধন্যবাদ, আবার আসবেন!</p>
+            </div>
+
+            <div id="a4-print-section" class="hidden p-8 bg-white text-black">
+                <div class="flex justify-between items-start mb-8">
+                    <div>
+                        <img id="a4-logo" src="" class="h-16 mb-2 hidden">
+                        <h1 class="text-3xl font-bold shop-name-display text-indigo-700">আমার দোকান</h1>
+                        <p>ঠিকানা: আপনার দোকানের ঠিকানা এখানে</p>
+                        <p>ফোন: ০১৭XXXXXXXX</p>
+                    </div>
+                    <div class="text-right">
+                        <h2 class="text-2xl font-bold text-gray-400 uppercase">Invoice</h2>
+                        <p class="font-bold">ইনভয়েস নং: <span id="a4-inv-no"></span></p>
+                        <p>তারিখ: <span class="invoice-date-print"></span></p>
+                    </div>
+                </div>
+                <div class="mb-6 pb-4 border-b">
+                    <h3 class="font-bold text-gray-700">কাস্টমার ডিটেইলস:</h3>
+                    <p id="a4-cust-name"></p>
+                    <p id="a4-cust-phone"></p>
+                </div>
+                <table class="w-full a4-table mb-6">
+                    <thead class="bg-gray-100">
+                        <tr><th>বিবরণ</th><th>পরিমাণ</th><th>দর</th><th>মোট</th></tr>
+                    </thead>
+                    <tbody id="a4-table-body"></tbody>
+                </table>
+                <div class="flex justify-end">
+                    <div class="w-64 space-y-2">
+                        <div class="flex justify-between"><span>সাব-টোটাল:</span><span id="a4-subtotal"></span></div>
+                        <div class="flex justify-between"><span>ভ্যাট:</span><span id="a4-vat"></span></div>
+                        <div class="flex justify-between"><span>ডিসকাউন্ট:</span><span id="a4-discount"></span></div>
+                        <div class="flex justify-between font-bold border-t pt-2 text-xl"><span>মোট বিল:</span><span id="a4-total"></span></div>
+                    </div>
+                </div>
+                <div class="mt-20 flex justify-between">
+                    <div class="border-t border-black w-48 text-center pt-1">কাস্টমার সিগনেচার</div>
+                    <div class="border-t border-black w-48 text-center pt-1">কর্তৃপক্ষের স্বাক্ষর</div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mt-6 no-print">
+                <button onclick="closeModal('invoicePreviewModal')" class="flex-1 bg-gray-500 text-white py-2 rounded font-bold">বন্ধ</button>
+                <button onclick="window.print()" class="flex-1 bg-indigo-600 text-white py-2 rounded font-bold">প্রিন্ট</button>
+                <button onclick="sendWhatsApp()" class="w-full bg-green-500 text-white py-2 rounded font-bold"><i class="fab fa-whatsapp"></i> হোয়াটসঅ্যাপে পাঠান</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profit Report Modal -->
+    <div id="profitReportModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-2/3 p-6 shadow-xl modal-content">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">বিস্তারিত প্রফিট অ্যান্ড লস রিপোর্ট</h2>
+            <div class="flex gap-2 mb-4">
+                <input type="date" id="report-start" class="border p-2 rounded text-sm">
+                <input type="date" id="report-end" class="border p-2 rounded text-sm">
+                <button onclick="generateDetailedReport()" class="bg-indigo-600 text-white px-4 rounded text-sm">ফিল্টার</button>
+                <button onclick="downloadPDFReport()" class="bg-red-600 text-white px-4 rounded text-sm"><i class="fas fa-file-pdf"></i> PDF ডাউনলোড</button>
+            </div>
+            <div id="report-result" class="space-y-2"></div>
+            <div class="flex justify-end mt-6">
+                <button onclick="closeModal('profitReportModal')" class="bg-gray-400 text-white px-4 py-2 rounded">বন্ধ করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product List Modal -->
+    <div id="productListModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-4/5 max-h-[90vh] p-6 shadow-xl flex flex-col modal-content">
+            <div class="flex justify-between items-center border-b pb-2 mb-4">
+                <h2 class="text-xl font-bold">প্রোডাক্ট লিস্ট</h2>
+                <button onclick="closeModal('productListModal')" class="text-red-500 font-bold text-2xl">&times;</button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead>
+                        <tr class="bg-gray-100 border-b text-gray-700">
+                            <th class="p-3">বারকোড/নাম</th>
+                            <th class="p-3">ক্রয় মূল্য</th>
+                            <th class="p-3">বিক্রয় মূল্য</th>
+                            <th class="p-3">স্টক/মেয়াদ</th>
+                            <th class="p-3 text-center">একশন</th>
+                        </tr>
+                    </thead>
+                    <tbody id="full-product-list" class="text-gray-600"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/3 p-6 shadow-xl modal-content">
+            <h2 id="productModalTitle" class="text-xl font-bold mb-4 border-b pb-2">নতুন প্রোডাক্ট যোগ করুন</h2>
+            <div class="space-y-4">
+                <input type="hidden" id="p-index">
                 <div class="flex gap-1">
                     <input type="text" id="p-barcode" placeholder="বারকোড" class="flex-1 border p-2 rounded">
                     <button onclick="generateRandomBarcode()" class="bg-gray-200 px-2 rounded text-xs">অটো</button>
                 </div>
                 <input type="text" id="p-name" placeholder="প্রোডাক্টের নাম" class="w-full border p-2 rounded">
-                
-                <!-- Category -->
-                <select id="p-category" class="w-full border p-2 rounded">
-                    <option value="">ক্যাটাগরি নির্বাচন করুন</option>
-                    <option value="electronics">ইলেকট্রনিক্স</option>
-                    <option value="clothing">পোশাক</option>
-                    <option value="food">খাদ্য</option>
-                    <option value="other">অন্যান্য</option>
-                </select>
                 
                 <div class="grid grid-cols-2 gap-2">
                     <input type="number" id="p-buy" placeholder="ক্রয় মূল্য" class="w-full border p-2 rounded">
@@ -1117,86 +1280,32 @@
                     </select>
                 </div>
 
-                <!-- Batch/Lot Tracking -->
-                <div>
-                    <label class="text-sm text-gray-500 mb-1 block lang-batch-number">ব্যাচ/লট নাম্বার</label>
-                    <input type="text" id="p-batch" placeholder="ব্যাচ নাম্বার" class="w-full border p-2 rounded">
-                </div>
-                
-                <!-- Serial Numbers -->
-                <div>
-                    <label class="text-sm text-gray-500 mb-1 block lang-serial-numbers">সিরিয়াল নাম্বার (কমা দিয়ে আলাদা করুন)</label>
-                    <textarea id="p-serials" placeholder="SN001, SN002, SN003" class="w-full border p-2 rounded serial-input" rows="2"></textarea>
-                </div>
-
-                <!-- Warehouse -->
-                <div>
-                    <label class="text-sm text-gray-500 mb-1 block lang-warehouse">ওয়ারহাউস</label>
-                    <select id="p-warehouse" class="w-full border p-2 rounded">
-                        <option value="main">মূল গোডাউন</option>
-                    </select>
-                </div>
-
-                <!-- Warranty -->
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="text-sm text-gray-500 mb-1 block">ওয়ারেন্টি</label>
-                        <input type="number" id="p-warranty" placeholder="সময়কাল" class="w-full border p-2 rounded">
-                    </div>
-                    <div>
-                        <label class="text-sm text-gray-500 mb-1 block">&nbsp;</label>
-                        <select id="p-warranty-unit" class="w-full border p-2 rounded">
-                            <option value="days">দিন</option>
-                            <option value="months">মাস</option>
-                            <option value="years">বছর</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="text-xs text-gray-500 lang-expiry-date">মেয়াদ উত্তীর্ণের তারিখ:</div>
+                <div class="text-xs text-gray-500">মেয়াদ উত্তীর্ণের তারিখ:</div>
                 <input type="date" id="p-expiry" class="w-full border p-2 rounded">
-                
-                <!-- Tax Rate -->
-                <div>
-                    <label class="text-sm text-gray-500 mb-1 block">ট্যাক্স রেট (%)</label>
-                    <input type="number" id="p-tax" value="0" class="w-full border p-2 rounded">
-                </div>
             </div>
             <div class="flex justify-end gap-3 mt-6">
-                <button onclick="closeModal('productModal')" class="bg-gray-400 text-white px-4 py-2 rounded lang-cancel">বন্ধ করুন</button>
-                <button onclick="addProduct()" class="bg-indigo-600 text-white px-4 py-2 rounded lang-save">সেভ করুন</button>
+                <button onclick="closeModal('productModal')" class="bg-gray-400 text-white px-4 py-2 rounded">বন্ধ করুন</button>
+                <button onclick="addProduct()" class="bg-indigo-600 text-white px-4 py-2 rounded">সেভ করুন</button>
             </div>
         </div>
     </div>
 
-    <!-- Advanced Return Modal -->
-    <div id="returnModal" class="modal">
-        <div class="bg-white rounded-lg w-11/12 md:w-1/2 p-6 shadow-xl modal-content">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2 text-orange-600">সেলস রিটার্ন / আইটেম ফেরত</h2>
+    <!-- Expense Modal -->
+    <div id="expenseModal" class="modal">
+        <div class="bg-white rounded-lg w-11/12 md:w-1/3 p-6 shadow-xl modal-content">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2 text-red-600">খরচ যোগ করুন</h2>
             <div class="space-y-4">
-                <div class="flex gap-2">
-                    <input type="text" id="return-inv-input" placeholder="ইনভয়েস নং (যেমন: INV-001)" class="flex-1 border p-2 rounded">
-                    <button onclick="findInvoiceForReturn()" class="bg-orange-600 text-white px-4 py-2 rounded">আইটেম খুঁজুন</button>
-                </div>
-                <div id="return-items-area" class="max-h-80 overflow-y-auto space-y-2"></div>
+                <input type="date" id="exp-date" class="w-full border p-2 rounded">
+                <input type="text" id="exp-title" placeholder="বিবরণ" class="w-full border p-2 rounded">
+                <input type="number" id="exp-amount" placeholder="পরিমাণ" class="w-full border p-2 rounded">
             </div>
-            <div class="flex justify-end mt-6">
-                <button onclick="closeModal('returnModal')" class="bg-gray-400 text-white px-4 py-2 rounded">বন্ধ করুন</button>
+            <div class="flex justify-end gap-3 mt-6">
+                <button onclick="closeModal('expenseModal')" class="bg-gray-400 text-white px-4 py-2 rounded">বন্ধ করুন</button>
+                <button onclick="addExpense()" class="bg-red-600 text-white px-4 py-2 rounded">সেভ করুন</button>
             </div>
         </div>
     </div>
 
-    <!-- All Other Modals -->
-    <div id="bulkBarcodeModal" class="modal"><!-- content from original --></div>
-    <div id="supplierModal" class="modal"><!-- content from original --></div>
-    <div id="settingsModal" class="modal"><!-- content from original --></div>
-    <div id="dueCollectionModal" class="modal"><!-- content from original --></div>
-    <div id="stockHistoryModal" class="modal"><!-- content from original --></div>
-    <div id="posModal" class="modal"><!-- content from original --></div>
-    <div id="invoicePreviewModal" class="modal"><!-- content from original --></div>
-    <div id="profitReportModal" class="modal"><!-- content from original --></div>
-    <div id="productListModal" class="modal"><!-- content from original --></div>
-    <div id="expenseModal" class="modal"><!-- content from original --></div>
     <div id="barcode-print-area" class="hidden"></div>
     <div id="bulk-barcode-print-area" class="hidden"></div>
 
@@ -1206,10 +1315,6 @@
         let currentUserRole = null;
         let currentUserOwner = null;
         let currentUserPermissions = {};
-        let currentLanguage = 'bn';
-        let currentBranch = 'main';
-        let isOnline = navigator.onLine;
-        
         let users = [];
         let pendingUsers = [];
         let products = [];
@@ -1218,383 +1323,16 @@
         let stockHistory = [];
         let customers = {};
         let suppliers = [];
-        let branches = [{ id: 'main', name: 'মূল শাখা', location: '', phone: '' }];
-        let warehouses = [{ id: 'main', name: 'মূল গোডাউন' }];
         let cart = [];
-        let backupSchedule = null;
-        let offlineQueue = [];
-        let recoveryPoints = [];
-        
         let totalSales = 0, totalProfit = 0, totalExpense = 0, totalDue = 0, totalStockValue = 0;
         let invoiceCount = 1;
-        let minStockThreshold = 5;
-        
         let config = { 
-            shopName: "প্রো শপ", 
+            shopName: "আমার দোকান", 
             vat: 5, 
             invoiceNote: "বিক্রিত মাল ফেরত নেওয়া হয় না।", 
-            logo: "",
-            dailyTarget: 0,
-            monthlyTarget: 0,
-            yearlyTarget: 0,
-            currency: "৳",
-            dateFormat: "dd/mm/yyyy",
-            autoBackup: false,
-            backupSchedule: "daily",
-            taxRates: [{ name: "VAT", rate: 5 }]
+            logo: "" 
         };
-        
         let isMobileMenuOpen = false;
-        let productImages = [];
-
-        // ==================== LANGUAGE SUPPORT ====================
-        const translations = {
-            bn: {
-                'login': 'লগইন করুন',
-                'username': 'ইউজারনেম',
-                'password': 'পাসওয়ার্ড',
-                'no-account': 'দোকানের মালিক?',
-                'register': 'রেজিস্ট্রেশন করুন',
-                'only-owner': 'শুধুমাত্র দোকানের মালিকদের জন্য',
-                'shop-name': 'দোকানের নাম',
-                'phone': 'মোবাইল নাম্বার',
-                'register-complete': 'রেজিস্ট্রেশন সম্পন্ন করুন',
-                'have-account': 'ইতিমধ্যে অ্যাকাউন্ট আছে?',
-                'login-link': 'লগইন করুন',
-                'dashboard': 'ড্যাশবোর্ড',
-                'add-product': 'প্রোডাক্ট এড',
-                'bulk-barcode': 'বাল্ক বারকোড',
-                'supplier': 'সাপ্লাইয়ার',
-                'stock-history': 'স্টক হিস্ট্রি',
-                'add-expense': 'খরচ এড',
-                'profit-report': 'প্রফিট রিপোর্ট',
-                'settings': 'সেটিংস',
-                'staff-management': 'স্টাফ ম্যানেজমেন্ট',
-                'branch-management': 'শাখা ম্যানেজমেন্ট',
-                'cloud-backup': 'ক্লাউড ব্যাকআপ',
-                'product-list': 'প্রোডাক্ট লিস্ট',
-                'due-collection': 'বাকি আদায়',
-                'return': 'সেলস রিটার্ন',
-                'open-pos': 'ওপেন POS (F2)',
-                'daily-closing': 'ডেইলি ক্লোজিং',
-                'user-approval': 'ইউজার এপ্রুভাল',
-                'backup': 'ব্যাকআপ',
-                'logout': 'লগআউট',
-                'dark-mode': 'ডার্ক মোড',
-                'total-sales': 'মোট বিক্রি',
-                'total-profit': 'মোট লাভ',
-                'total-expense': 'মোট খরচ',
-                'net-profit': 'নিট লাভ',
-                'total-due': 'বাকি',
-                'stock-value': 'স্টক মূল্য',
-                'sales-chart': 'বিক্রির গ্রাফ (গত ৭ দিন)',
-                'top-products': 'বেস্ট সেলিং প্রোডাক্ট',
-                'profit-loss': 'লাভ/লস তুলনামূলক গ্রাফ',
-                'monthly-sales': 'মাসিক বিক্রি রিপোর্ট',
-                'stock-alert': 'স্টক এলার্ট!',
-                'expiry-alert': 'মেয়াদ শেষ হওয়ার পথে!',
-                'target-alert': 'টার্গেট অ্যালার্ট!',
-                'recent-sales': 'সাম্প্রতিক বিক্রি',
-                'invoice': 'ইনভয়েস',
-                'customer': 'কাস্টমার',
-                'amount': 'পরিমাণ',
-                'status': 'অবস্থা',
-                'seller': 'বিক্রেতা',
-                'reset-data': 'রিসেট ডাটা',
-                'pos': 'POS বিক্রি',
-                'product-list-perm': 'প্রোডাক্ট লিস্ট',
-                'due-collection-perm': 'বাকি আদায়',
-                'return-perm': 'রিটার্ন',
-                'daily-closing-perm': 'ডেইলি ক্লোজিং',
-                'customer-view': 'কাস্টমার দেখা',
-                'product-add': 'প্রোডাক্ট এড',
-                'product-edit': 'প্রোডাক্ট এডিট',
-                'expense-view': 'খরচ দেখা',
-                'close': 'বন্ধ করুন',
-                'cancel': 'বাতিল',
-                'save': 'সংরক্ষণ করুন',
-                'edit': 'এডিট',
-                'delete': 'ডিলিট',
-                'search': 'খুঁজুন',
-                'print': 'প্রিন্ট',
-                'preview': 'প্রিভিউ',
-                'product-images': 'প্রোডাক্টের ছবি',
-                'batch-number': 'ব্যাচ/লট নাম্বার',
-                'serial-numbers': 'সিরিয়াল নাম্বার',
-                'warehouse': 'ওয়ারহাউস',
-                'expiry-date': 'মেয়াদ উত্তীর্ণের তারিখ',
-                'branch-management-title': 'শাখা ম্যানেজমেন্ট',
-                'add-branch': 'নতুন শাখা যোগ করুন',
-                'branch-name': 'শাখার নাম',
-                'branch-location': 'ঠিকানা',
-                'branch-phone': 'ফোন নাম্বার',
-                'add-branch-btn': 'শাখা যোগ করুন',
-                'branch-list': 'শাখা লিস্ট',
-                'transfer-stock': 'স্টক ট্রান্সফার',
-                'cloud-backup-title': 'ক্লাউড ব্যাকআপ',
-                'backup-to-drive': 'Google Drive এ ব্যাকআপ',
-                'restore-from-drive': 'Google Drive থেকে রিস্টোর',
-                'backup-to-dropbox': 'Dropbox এ ব্যাকআপ',
-                'restore-from-dropbox': 'Dropbox থেকে রিস্টোর',
-                'auto-backup': 'অটো ব্যাকআপ শিডিউল',
-                'set-schedule': 'শিডিউল সেট করুন',
-                'staff-username': 'স্টাফ ইউজারনেম',
-                'staff-name': 'স্টাফের নাম',
-                'staff-phone': 'মোবাইল নাম্বার',
-                'set-permissions': 'পার্মিশন সেট করুন:',
-                'edit-permission': 'স্টাফ পার্মিশন এডিট',
-                'add-new-staff': 'নতুন স্টাফ যোগ করুন',
-                'create-staff': 'স্টাফ তৈরি করুন',
-                'staff-list': 'স্টাফ লিস্ট',
-                'pending-owners': 'পেন্ডিং দোকান মালিক',
-                'fill-all-fields': 'সব ফিল্ড পূরণ করুন',
-                'username-min-3': 'ইউজারনেম কমপক্ষে ৩ অক্ষরের হতে হবে',
-                'password-min-4': 'পাসওয়ার্ড কমপক্ষে ৪ অক্ষরের হতে হবে',
-                'username-exists': 'এই ইউজারনেম ইতিমধ্যে ব্যবহৃত!',
-                'pending-exists': 'এই ইউজারনেম ইতিমধ্যে এপ্রুভালের অপেক্ষায় আছে!',
-                'reg-success': 'রেজিস্ট্রেশন সফল! এডমিন এপ্রুভালের পর লগইন করতে পারবেন।',
-                'login-success': 'লগইন সফল!',
-                'login-failed': 'ভুল ইউজারনেম বা পাসওয়ার্ড!',
-                'logout-success': 'লগআউট সম্পন্ন',
-                'welcome': 'স্বাগতম',
-                'permission-denied': 'আপনার এই ফিচার ব্যবহারের অনুমতি নেই!',
-                'stock-out': 'স্টক শেষ!',
-                'stock-exceed': 'স্টক এর বেশি দেওয়া সম্ভব নয়!',
-                'cart-empty': 'কার্ট খালি!',
-                'sale-complete': 'বিক্রি সম্পন্ন হয়েছে!',
-                'payment-success': 'টাকা জমা হয়েছে!',
-                'return-success': 'আইটেম ফেরত নেওয়া হয়েছে!',
-                'supplier-added': 'সাপ্লাইয়ার যোগ হয়েছে!',
-                'expense-added': 'খরচ যোগ হয়েছে!',
-                'settings-saved': 'সেটিংস সেভ হয়েছে!',
-                'backup-start': 'ব্যাকআপ ডাউনলোড হচ্ছে!',
-                'data-reset': 'ডাটা রিসেট করা হবে',
-                'branch-added': 'নতুন শাখা যোগ হয়েছে!',
-                'stock-transferred': 'স্টক ট্রান্সফার সম্পন্ন!',
-                'target-reached': 'টার্গেট পূর্ণ হয়েছে!',
-                'install-pwa': 'হোম স্ক্রিনে অ্যাড করুন',
-                'offline-mode': 'অফলাইন মোড',
-                'online-mode': 'অনলাইন মোড',
-                'return-reason': 'রিটার্নের কারণ',
-                'damaged': 'পণ্য নষ্ট',
-                'expired': 'মেয়াদ উত্তীর্ণ',
-                'wrong-item': 'ভুল পণ্য',
-                'customer-return': 'গ্রাহক ফেরত',
-                'warranty-claim': 'ওয়ারেন্টি ক্লেইম',
-                'warranty-period': 'ওয়ারেন্টি সময়কাল',
-                'warranty-until': 'ওয়ারেন্টি শেষ হওয়ার তারিখ',
-                'exchange': 'এক্সচেঞ্জ',
-                'refund': 'রিফান্ড'
-            },
-            en: {
-                'login': 'Login',
-                'username': 'Username',
-                'password': 'Password',
-                'no-account': 'Shop Owner?',
-                'register': 'Register',
-                'only-owner': 'Only for shop owners',
-                'shop-name': 'Shop Name',
-                'phone': 'Mobile Number',
-                'register-complete': 'Complete Registration',
-                'have-account': 'Already have an account?',
-                'login-link': 'Login',
-                'dashboard': 'Dashboard',
-                'add-product': 'Add Product',
-                'bulk-barcode': 'Bulk Barcode',
-                'supplier': 'Supplier',
-                'stock-history': 'Stock History',
-                'add-expense': 'Add Expense',
-                'profit-report': 'Profit Report',
-                'settings': 'Settings',
-                'staff-management': 'Staff Management',
-                'branch-management': 'Branch Management',
-                'cloud-backup': 'Cloud Backup',
-                'product-list': 'Product List',
-                'due-collection': 'Due Collection',
-                'return': 'Sales Return',
-                'open-pos': 'Open POS (F2)',
-                'daily-closing': 'Daily Closing',
-                'user-approval': 'User Approval',
-                'backup': 'Backup',
-                'logout': 'Logout',
-                'dark-mode': 'Dark Mode',
-                'total-sales': 'Total Sales',
-                'total-profit': 'Total Profit',
-                'total-expense': 'Total Expense',
-                'net-profit': 'Net Profit',
-                'total-due': 'Due',
-                'stock-value': 'Stock Value',
-                'sales-chart': 'Sales Chart (Last 7 Days)',
-                'top-products': 'Best Selling Products',
-                'profit-loss': 'Profit/Loss Comparison',
-                'monthly-sales': 'Monthly Sales Report',
-                'stock-alert': 'Stock Alert!',
-                'expiry-alert': 'Expiry Alert!',
-                'target-alert': 'Target Alert!',
-                'recent-sales': 'Recent Sales',
-                'invoice': 'Invoice',
-                'customer': 'Customer',
-                'amount': 'Amount',
-                'status': 'Status',
-                'seller': 'Seller',
-                'reset-data': 'Reset Data',
-                'pos': 'POS Sales',
-                'product-list-perm': 'Product List',
-                'due-collection-perm': 'Due Collection',
-                'return-perm': 'Return',
-                'daily-closing-perm': 'Daily Closing',
-                'customer-view': 'View Customers',
-                'product-add': 'Add Product',
-                'product-edit': 'Edit Product',
-                'expense-view': 'View Expense',
-                'close': 'Close',
-                'cancel': 'Cancel',
-                'save': 'Save',
-                'edit': 'Edit',
-                'delete': 'Delete',
-                'search': 'Search',
-                'print': 'Print',
-                'preview': 'Preview',
-                'product-images': 'Product Images',
-                'batch-number': 'Batch/Lot Number',
-                'serial-numbers': 'Serial Numbers',
-                'warehouse': 'Warehouse',
-                'expiry-date': 'Expiry Date',
-                'branch-management-title': 'Branch Management',
-                'add-branch': 'Add New Branch',
-                'branch-name': 'Branch Name',
-                'branch-location': 'Location',
-                'branch-phone': 'Phone Number',
-                'add-branch-btn': 'Add Branch',
-                'branch-list': 'Branch List',
-                'transfer-stock': 'Transfer Stock',
-                'cloud-backup-title': 'Cloud Backup',
-                'backup-to-drive': 'Backup to Google Drive',
-                'restore-from-drive': 'Restore from Google Drive',
-                'backup-to-dropbox': 'Backup to Dropbox',
-                'restore-from-dropbox': 'Restore from Dropbox',
-                'auto-backup': 'Auto Backup Schedule',
-                'set-schedule': 'Set Schedule',
-                'staff-username': 'Staff Username',
-                'staff-name': 'Staff Name',
-                'staff-phone': 'Mobile Number',
-                'set-permissions': 'Set Permissions:',
-                'edit-permission': 'Edit Staff Permission',
-                'add-new-staff': 'Add New Staff',
-                'create-staff': 'Create Staff',
-                'staff-list': 'Staff List',
-                'pending-owners': 'Pending Shop Owners',
-                'fill-all-fields': 'Please fill all fields',
-                'username-min-3': 'Username must be at least 3 characters',
-                'password-min-4': 'Password must be at least 4 characters',
-                'username-exists': 'This username already exists!',
-                'pending-exists': 'This username is pending approval!',
-                'reg-success': 'Registration successful! You can login after admin approval.',
-                'login-success': 'Login successful!',
-                'login-failed': 'Invalid username or password!',
-                'logout-success': 'Logout completed',
-                'welcome': 'Welcome',
-                'permission-denied': 'You do not have permission to use this feature!',
-                'stock-out': 'Out of stock!',
-                'stock-exceed': 'Cannot exceed available stock!',
-                'cart-empty': 'Cart is empty!',
-                'sale-complete': 'Sale completed successfully!',
-                'payment-success': 'Payment received!',
-                'return-success': 'Item returned successfully!',
-                'supplier-added': 'Supplier added!',
-                'expense-added': 'Expense added!',
-                'settings-saved': 'Settings saved!',
-                'backup-start': 'Backup downloading!',
-                'data-reset': 'Data will be reset',
-                'branch-added': 'New branch added!',
-                'stock-transferred': 'Stock transferred successfully!',
-                'target-reached': 'Target achieved!',
-                'install-pwa': 'Add to Home Screen',
-                'offline-mode': 'Offline Mode',
-                'online-mode': 'Online Mode',
-                'return-reason': 'Return Reason',
-                'damaged': 'Damaged',
-                'expired': 'Expired',
-                'wrong-item': 'Wrong Item',
-                'customer-return': 'Customer Return',
-                'warranty-claim': 'Warranty Claim',
-                'warranty-period': 'Warranty Period',
-                'warranty-until': 'Warranty Until',
-                'exchange': 'Exchange',
-                'refund': 'Refund'
-            }
-        };
-
-        function setLanguage(lang) {
-            currentLanguage = lang;
-            document.body.setAttribute('data-language', lang);
-            
-            document.querySelectorAll('[class^="lang-"]').forEach(el => {
-                const key = el.className.split(' ').find(c => c.startsWith('lang-'))?.replace('lang-', '');
-                if (key && translations[lang][key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = translations[lang][key];
-                    } else {
-                        el.innerHTML = translations[lang][key];
-                    }
-                }
-            });
-            
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if ((lang === 'bn' && btn.innerText === 'বাংলা') || 
-                    (lang === 'en' && btn.innerText === 'English')) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            localStorage.setItem('preferred_language', lang);
-        }
-
-        // ==================== PWA SUPPORT ====================
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('ServiceWorker registered');
-                }).catch(err => {
-                    console.log('ServiceWorker registration failed');
-                });
-            });
-        }
-
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            showToast(translations[currentLanguage]['install-pwa'], 'info');
-        });
-
-        function installPWA() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the install prompt');
-                    }
-                    deferredPrompt = null;
-                });
-            }
-        }
-
-        // ==================== ONLINE/OFFLINE DETECTION ====================
-        window.addEventListener('online', updateOnlineStatus);
-        window.addEventListener('offline', updateOnlineStatus);
-
-        function updateOnlineStatus() {
-            isOnline = navigator.onLine;
-            const badge = document.getElementById('offlineBadge');
-            if (isOnline) {
-                badge.classList.add('hidden');
-                syncOfflineData();
-            } else {
-                badge.classList.remove('hidden');
-            }
-        }
 
         // ==================== INITIALIZATION ====================
         function initializeSystem() {
@@ -1618,16 +1356,6 @@
             } else {
                 pendingUsers = [];
                 localStorage.setItem('pending_owners', JSON.stringify(pendingUsers));
-            }
-            
-            const storedBranches = localStorage.getItem('branches');
-            if (storedBranches) {
-                branches = JSON.parse(storedBranches);
-            }
-            
-            const storedWarehouses = localStorage.getItem('warehouses');
-            if (storedWarehouses) {
-                warehouses = JSON.parse(storedWarehouses);
             }
             
             const savedLayout = localStorage.getItem('layout_preference');
@@ -1657,27 +1385,27 @@
             const phone = document.getElementById('reg-phone').value.trim();
             
             if (!username || !password || !shopName || !phone) {
-                showToast(translations[currentLanguage]['fill-all-fields'], "error");
+                showToast("⚠️ সব ফিল্ড পূরণ করুন", "error");
                 return;
             }
 
             if (username.length < 3) {
-                showToast(translations[currentLanguage]['username-min-3'], "error");
+                showToast("⚠️ ইউজারনেম কমপক্ষে ৩ অক্ষরের হতে হবে", "error");
                 return;
             }
 
             if (password.length < 4) {
-                showToast(translations[currentLanguage]['password-min-4'], "error");
+                showToast("⚠️ পাসওয়ার্ড কমপক্ষে ৪ অক্ষরের হতে হবে", "error");
                 return;
             }
 
             if (users.some(u => u.username === username)) {
-                showToast(translations[currentLanguage]['username-exists'], "error");
+                showToast("❌ এই ইউজারনেম ইতিমধ্যে ব্যবহৃত!", "error");
                 return;
             }
 
             if (pendingUsers.some(u => u.username === username)) {
-                showToast(translations[currentLanguage]['pending-exists'], "warning");
+                showToast("⏳ এই ইউজারনেম ইতিমধ্যে এপ্রুভালের অপেক্ষায় আছে!", "warning");
                 return;
             }
 
@@ -1692,7 +1420,7 @@
             });
             
             localStorage.setItem('pending_owners', JSON.stringify(pendingUsers));
-            showToast(translations[currentLanguage]['reg-success'], "success");
+            showToast("✅ রেজিস্ট্রেশন সফল! এডমিন এপ্রুভালের পর লগইন করতে পারবেন।", "success");
             
             document.getElementById('reg-username').value = '';
             document.getElementById('reg-pass').value = '';
@@ -1710,7 +1438,7 @@
             const password = document.getElementById('auth-pass').value.trim();
 
             if (!username || !password) {
-                showToast(translations[currentLanguage]['fill-all-fields'], "error");
+                showToast("⚠️ ইউজারনেম ও পাসওয়ার্ড দিন", "error");
                 return;
             }
 
@@ -1725,14 +1453,14 @@
                 document.getElementById('app-content').classList.remove('hidden');
                 updateUserDisplay();
                 loadUserData();
-                showToast(translations[currentLanguage]['login-success'], "success");
+                showToast("✅ এডমিন লগইন সফল!", "success");
                 return;
             }
 
             const user = users.find(u => u.username === username && u.password === password);
             if (user) {
                 if (!user.approved) {
-                    showToast(translations[currentLanguage]['pending-exists'], "warning");
+                    showToast("⏳ আপনার অ্যাকাউন্ট এডমিন এপ্রুভালের অপেক্ষায় আছে!", "warning");
                     return;
                 }
                 
@@ -1751,9 +1479,9 @@
                 updateUserDisplay();
                 loadUserData();
                 applyPermissions();
-                showToast(`${translations[currentLanguage]['welcome']} ${user.name || username}!`, "success");
+                showToast(`✅ স্বাগতম ${user.name || username}!`, "success");
             } else {
-                showToast(translations[currentLanguage]['login-failed'], "error");
+                showToast("❌ ভুল ইউজারনেম বা পাসওয়ার্ড!", "error");
             }
         }
 
@@ -1771,7 +1499,7 @@
             document.getElementById('auth-username').value = '';
             document.getElementById('auth-pass').value = '';
             closeMobileMenu();
-            showToast(translations[currentLanguage]['logout-success'], "info");
+            showToast("👋 লগআউট সম্পন্ন", "info");
         }
 
         function updateUserDisplay() {
@@ -1817,13 +1545,14 @@
             const resetBtn = document.getElementById('reset-data-btn');
             if (resetBtn) resetBtn.style.display = 'none';
             
+            // Store permissions in localStorage for persistence
             localStorage.setItem('currentUserPermissions', JSON.stringify(currentUserPermissions));
         }
 
         // ==================== STAFF MANAGEMENT ====================
         function addStaff() {
             if (currentUserRole !== 'owner') {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("শুধুমাত্র মালিক স্টাফ যোগ করতে পারেন!", "error");
                 return;
             }
             
@@ -1833,12 +1562,12 @@
             const phone = document.getElementById('staff-phone').value.trim();
             
             if (!username || !password || !name) {
-                showToast(translations[currentLanguage]['fill-all-fields'], "error");
+                showToast("⚠️ সব ফিল্ড পূরণ করুন", "error");
                 return;
             }
             
             if (users.some(u => u.username === username)) {
-                showToast(translations[currentLanguage]['username-exists'], "error");
+                showToast("❌ এই ইউজারনেম ইতিমধ্যে ব্যবহৃত!", "error");
                 return;
             }
             
@@ -1876,7 +1605,7 @@
             document.getElementById('staff-phone').value = '';
             
             renderStaffList();
-            showToast(`${translations[currentLanguage]['create-staff']} ${name}!`, "success");
+            showToast(`✅ স্টাফ ${name} তৈরি হয়েছে!`, "success");
         }
 
         function renderStaffList() {
@@ -1992,7 +1721,7 @@
                 localStorage.setItem('currentUserPermissions', JSON.stringify(permissions));
             }
             
-            showToast(`${username} এর পার্মিশন আপডেট হয়েছে!`, "success");
+            showToast(`✅ ${username} এর পার্মিশন আপডেট হয়েছে!`, "success");
         }
 
         function removeStaff(username) {
@@ -2003,7 +1732,7 @@
                 users.splice(index, 1);
                 localStorage.setItem('all_users', JSON.stringify(users));
                 renderStaffList();
-                showToast(`${username} সরানো হয়েছে`, "success");
+                showToast(`✅ ${username} সরানো হয়েছে`, "success");
             }
         }
 
@@ -2025,7 +1754,7 @@
 
         function openAdminApprovalModal() {
             if (currentUserRole !== 'admin') {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("শুধুমাত্র এডমিন এই ফিচার ব্যবহার করতে পারবেন!", "error");
                 return;
             }
             
@@ -2086,7 +1815,7 @@
             
             updatePendingBadge();
             openAdminApprovalModal();
-            showToast(`${user.username} এপ্রুভ করা হয়েছে!`, "success");
+            showToast(`✅ ${user.username} এপ্রুভ করা হয়েছে!`, "success");
         }
 
         function rejectOwner(index) {
@@ -2095,7 +1824,7 @@
             localStorage.setItem('pending_owners', JSON.stringify(pendingUsers));
             updatePendingBadge();
             openAdminApprovalModal();
-            showToast(`রিকোয়েস্ট রিজেক্ট করা হয়েছে`, "info");
+            showToast(`❌ রিকোয়েস্ট রিজেক্ট করা হয়েছে`, "info");
         }
 
         // ==================== UI FUNCTIONS ====================
@@ -2138,20 +1867,20 @@
 
         function openModal(id) { 
             if(id === 'productModal' && !document.getElementById('p-index').value) {
-                document.getElementById('productModalTitle').innerText = translations[currentLanguage]['add-product'];
+                document.getElementById('productModalTitle').innerText = "নতুন প্রোডাক্ট যোগ করুন";
             }
             
             if (currentUserRole === 'staff') {
                 if (id === 'productModal' && !currentUserPermissions.productAdd) {
-                    showToast(translations[currentLanguage]['permission-denied'], "error");
+                    showToast("আপনার এই ফিচার ব্যবহারের অনুমতি নেই!", "error");
                     return;
                 }
                 if (id === 'expenseModal' && !currentUserPermissions.expenseView) {
-                    showToast(translations[currentLanguage]['permission-denied'], "error");
+                    showToast("আপনার এই ফিচার ব্যবহারের অনুমতি নেই!", "error");
                     return;
                 }
                 if (id === 'profitReportModal' && !currentUserPermissions.dailyClosing) {
-                    showToast(translations[currentLanguage]['permission-denied'], "error");
+                    showToast("আপনার এই ফিচার ব্যবহারের অনুমতি নেই!", "error");
                     return;
                 }
             }
@@ -2163,8 +1892,6 @@
                 if(id === 'productListModal') renderFullProductList(); 
                 if(id === 'dueCollectionModal') searchDueRecords();
                 if(id === 'bulkBarcodeModal') prepareBulkBarcodeSelect();
-                if(id === 'branchManagementModal') renderBranchList();
-                if(id === 'inventoryModal') renderInventoryData();
                 
                 if(id === 'posModal') {
                     document.getElementById('vat-rate-label').innerText = config.vat;
@@ -2191,8 +1918,6 @@
                     document.getElementById('p-qty').value = "";
                     document.getElementById('p-expiry').value = "";
                     document.getElementById('p-unit').value = "Pcs";
-                    productImages = [];
-                    document.getElementById('product-image-gallery').innerHTML = '';
                 }
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
@@ -2246,7 +1971,7 @@
             else suppliers = [];
             
             if (storedConfig) config = JSON.parse(storedConfig);
-            else config = { shopName: "প্রো শপ", vat: 5, invoiceNote: "বিক্রিত মাল ফেরত নেওয়া হয় না।", logo: "" };
+            else config = { shopName: "আমার দোকান", vat: 5, invoiceNote: "বিক্রিত মাল ফেরত নেওয়া হয় না।", logo: "" };
             
             if (storedInvoiceCount) invoiceCount = parseInt(storedInvoiceCount);
             else invoiceCount = 1;
@@ -2266,13 +1991,6 @@
             if (currentUserRole === 'owner') {
                 renderStaffList();
             }
-            
-            // Update branch selector
-            const branchSelect = document.getElementById('branchSelect');
-            if (branchSelect && branches.length > 1) {
-                document.getElementById('branchSelector').classList.remove('hidden');
-                branchSelect.innerHTML = branches.map(b => `<option value="${b.id}">${b.name}</option>`).join('');
-            }
         }
 
         function saveToStorage() {
@@ -2291,7 +2009,7 @@
         function addProduct() {
             if (currentUserRole !== 'owner' && currentUserRole !== 'admin') {
                 if (!currentUserPermissions.productAdd) {
-                    showToast(translations[currentLanguage]['permission-denied'], "error");
+                    showToast("আপনার প্রোডাক্ট এড করার অনুমতি নেই!", "error");
                     return;
                 }
             }
@@ -2304,32 +2022,22 @@
             let qty = parseFloat(document.getElementById('p-qty').value) || 0;
             let unit = document.getElementById('p-unit').value;
             let expiry = document.getElementById('p-expiry').value;
-            let category = document.getElementById('p-category').value;
-            let batch = document.getElementById('p-batch').value;
-            let serials = document.getElementById('p-serials').value;
-            let warehouse = document.getElementById('p-warehouse').value;
-            let warranty = document.getElementById('p-warranty').value;
-            let warrantyUnit = document.getElementById('p-warranty-unit').value;
-            let tax = parseFloat(document.getElementById('p-tax').value) || 0;
             
             if(!name) {
-                showToast(translations[currentLanguage]['fill-all-fields'], "error");
+                showToast("নাম দিন", "error");
                 return;
             }
 
-            let productData = { 
-                barcode, name, buy, sell, qty, unit, expiry, category, batch, 
-                serials, warehouse, warranty, warrantyUnit, tax, images: productImages 
-            };
+            let productData = { barcode, name, buy, sell, qty, unit, expiry };
 
             if(index !== "") {
                 products[index] = productData;
                 logStock(name, 'এডজাস্ট/আপডেট', qty, unit);
-                showToast(translations[currentLanguage]['product-edit'] + " " + translations[currentLanguage]['success'], "success");
+                showToast("✅ প্রোডাক্ট আপডেট হয়েছে!", "success");
             } else {
                 products.push(productData);
                 logStock(name, 'নতুন স্টক ইন', qty, unit);
-                showToast(translations[currentLanguage]['product-add'] + " " + translations[currentLanguage]['success'], "success");
+                showToast("✅ প্রোডাক্ট যোগ হয়েছে!", "success");
             }
             
             saveToStorage();
@@ -2341,7 +2049,7 @@
         function editProduct(index) {
             if (currentUserRole !== 'owner' && currentUserRole !== 'admin') {
                 if (!currentUserPermissions.productEdit) {
-                    showToast(translations[currentLanguage]['permission-denied'], "error");
+                    showToast("আপনার প্রোডাক্ট এডিট করার অনুমতি নেই!", "error");
                     return;
                 }
             }
@@ -2354,36 +2062,22 @@
             document.getElementById('p-qty').value = p.qty;
             document.getElementById('p-unit').value = p.unit || "Pcs";
             document.getElementById('p-expiry').value = p.expiry || "";
-            document.getElementById('p-category').value = p.category || "";
-            document.getElementById('p-batch').value = p.batch || "";
-            document.getElementById('p-serials').value = p.serials || "";
-            document.getElementById('p-warehouse').value = p.warehouse || "main";
-            document.getElementById('p-warranty').value = p.warranty || "";
-            document.getElementById('p-warranty-unit').value = p.warrantyUnit || "days";
-            document.getElementById('p-tax').value = p.tax || 0;
-            
-            if (p.images) {
-                productImages = p.images;
-                renderProductImages();
-            }
-            
-            document.getElementById('productModalTitle').innerText = translations[currentLanguage]['edit'] + " " + translations[currentLanguage]['product'];
+            document.getElementById('productModalTitle').innerText = "প্রোডাক্ট এডিট করুন";
             openModal('productModal');
         }
 
         function deleteProduct(index) {
             if (currentUserRole !== 'owner' && currentUserRole !== 'admin') {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("শুধুমাত্র মালিক প্রোডাক্ট ডিলিট করতে পারেন!", "error");
                 return;
             }
-            if(confirm(translations[currentLanguage]['delete'] + "?")) {
-                logStock(products[index].name, 'ডিলিট', products[index].qty, products[index].unit);
+            if(confirm("ডিলিট করবেন?")) {
                 products.splice(index, 1);
                 saveToStorage();
                 renderFullProductList();
                 calculateDashboardStats();
                 renderPOSProducts();
-                showToast(translations[currentLanguage]['delete'] + " " + translations[currentLanguage]['success'], "success");
+                showToast("✅ প্রোডাক্ট ডিলিট হয়েছে!", "success");
             }
         }
 
@@ -2459,13 +2153,13 @@
             let idx = document.getElementById('bulk-p-select').value;
             let qty = parseInt(document.getElementById('bulk-p-qty').value) || 0;
             if(idx === "" || qty <= 0) {
-                showToast(translations[currentLanguage]['fill-all-fields'], "error");
+                showToast("সঠিক প্রোডাক্ট ও পরিমাণ দিন।", "error");
                 return;
             }
 
             let p = products[idx];
             if(!p.barcode) {
-                showToast("বারকোড নেই!", "error");
+                showToast("এই প্রোডাক্টের কোনো বারকোড নেই! আগে বারকোড এড করুন।", "error");
                 return;
             }
 
@@ -2499,7 +2193,7 @@
         function addToCart(index) {
             let p = products[index];
             if(p.qty <= 0) {
-                showToast(translations[currentLanguage]['stock-out'], "error");
+                showToast("স্টক শেষ!", "error");
                 return;
             }
             
@@ -2508,7 +2202,7 @@
                 if(existingItem.orderQty < p.qty) {
                     existingItem.orderQty++;
                 } else {
-                    showToast(translations[currentLanguage]['stock-exceed'], "warning");
+                    showToast("স্টক এর বেশি দেওয়া সম্ভব নয়!", "warning");
                 }
             } else {
                 cart.push({...p, originalIndex: index, orderQty: 1});
@@ -2521,7 +2215,7 @@
             let originalP = products[cart[index].originalIndex];
             
             if(qty > originalP.qty) {
-                showToast(translations[currentLanguage]['stock-exceed'], "warning");
+                showToast("স্টক ফুরিয়ে গেছে!", "warning");
                 qty = originalP.qty;
             }
             
@@ -2565,19 +2259,11 @@
                 </div>`;
             }).join('');
             
-            let taxAmount = 0;
-            if (config.taxRates) {
-                config.taxRates.forEach(rate => {
-                    taxAmount += (subtotal * rate.rate) / 100;
-                });
-            } else {
-                taxAmount = (subtotal * config.vat) / 100;
-            }
-            
-            let finalTotal = (subtotal + taxAmount) - discount;
+            let vatAmount = (subtotal * config.vat) / 100;
+            let finalTotal = (subtotal + vatAmount) - discount;
 
             document.getElementById('cart-subtotal').innerText = '৳ ' + subtotal.toLocaleString();
-            document.getElementById('cart-vat').innerText = '৳ ' + taxAmount.toLocaleString();
+            document.getElementById('cart-vat').innerText = '৳ ' + vatAmount.toLocaleString();
             document.getElementById('cart-total').innerText = '৳ ' + finalTotal.toLocaleString();
             document.getElementById('cart-count').innerText = cart.length + ' আইটেম';
         }
@@ -2590,7 +2276,7 @@
                     addToCart(index);
                     e.target.value = "";
                 } else {
-                    showToast(translations[currentLanguage]['product-not-found'], "error");
+                    showToast("প্রোডাক্ট পাওয়া যায়নি!", "error");
                     e.target.value = "";
                 }
             }
@@ -2599,12 +2285,12 @@
         // ==================== CHECKOUT ====================
         function checkout() {
             if (currentUserRole === 'staff' && !currentUserPermissions.pos) {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("আপনার POS ব্যবহারের অনুমতি নেই!", "error");
                 return;
             }
             
             if(cart.length === 0) {
-                showToast(translations[currentLanguage]['cart-empty'], "error");
+                showToast("কার্ট খালি!", "error");
                 return;
             }
             
@@ -2629,28 +2315,15 @@
                 a4Rows += `<tr><td>${item.name}</td><td>${item.orderQty} ${item.unit || ''}</td><td>${item.sell}</td><td>${lineTotal}</td></tr>`;
             });
 
-            let taxAmount = 0;
-            if (config.taxRates) {
-                config.taxRates.forEach(rate => {
-                    taxAmount += (subtotal * rate.rate) / 100;
-                });
-            } else {
-                taxAmount = (subtotal * config.vat) / 100;
-            }
-            
-            let finalSubtotal = (subtotal + taxAmount) - discount;
+            let vatAmount = (subtotal * config.vat) / 100;
+            let finalSubtotal = (subtotal + vatAmount) - discount;
             let profit = (subtotal - costPriceTotal) - discount;
             let due = finalSubtotal - paid;
             
             let earnedPoints = Math.floor(finalSubtotal / 100);
             if(customerPhone !== "N/A") {
-                if(!customers[customerPhone]) customers[customerPhone] = { name: customer, points: 0, purchases: [] };
+                if(!customers[customerPhone]) customers[customerPhone] = { name: customer, points: 0 };
                 customers[customerPhone].points += earnedPoints;
-                customers[customerPhone].purchases.push({
-                    date: new Date().toISOString(),
-                    amount: finalSubtotal,
-                    inv: `INV-00${invoiceCount}`
-                });
             }
 
             let record = { 
@@ -2658,7 +2331,7 @@
                 customer, 
                 phone: customerPhone, 
                 subtotal: subtotal,
-                tax: taxAmount,
+                vat: vatAmount,
                 discount: discount,
                 amount: finalSubtotal, 
                 profit: profit, 
@@ -2668,20 +2341,13 @@
                 date: new Date().toISOString(),
                 cartItems: currentCartCopy,
                 seller: currentUser,
-                sellerRole: currentUserRole,
-                branch: currentBranch
+                sellerRole: currentUserRole
             };
+            salesRecords.push(record);
+            invoiceCount++;
             
-            if (!isOnline) {
-                addToOfflineQueue('sale', record);
-                showToast("অফলাইনে বিক্রয় সংরক্ষিত হয়েছে", "success");
-            } else {
-                salesRecords.push(record);
-                invoiceCount++;
-                saveToStorage();
-            }
+            saveToStorage();
             
-            // Generate invoice
             document.querySelectorAll('.invoice-date-print').forEach(el => el.innerText = new Date().toLocaleDateString('bn-BD'));
             document.querySelectorAll('.invoice-qr').forEach(el => el.src = generateQR(record.inv));
             document.querySelectorAll('.invoice-note').forEach(el => el.innerText = config.invoiceNote);
@@ -2692,13 +2358,12 @@
                     <p>কাস্টমার: ${customer} (${customerPhone})</p>
                     <p>পেমেন্ট: ${paymentMethod}</p>
                     <p>বিক্রেতা: ${currentUser}</p>
-                    <p>শাখা: ${branches.find(b => b.id === currentBranch)?.name || 'মূল শাখা'}</p>
                 </div>
                 <hr class="border-dotted my-1">
                 ${printRows}
                 <hr class="border-dotted my-1">
                 <div class="flex justify-between text-xs"><span>সাব-টোটাল:</span><span>৳ ${subtotal}</span></div>
-                <div class="flex justify-between text-xs"><span>ট্যাক্স:</span><span>৳ ${taxAmount}</span></div>
+                <div class="flex justify-between text-xs"><span>ভ্যাট (${config.vat}%):</span><span>৳ ${vatAmount}</span></div>
                 <div class="flex justify-between text-xs"><span>ডিসকাউন্ট:</span><span>- ৳ ${discount}</span></div>
                 <div class="font-bold flex justify-between border-t border-dotted mt-1 pt-1"><span>মোট:</span><span>৳ ${finalSubtotal}</span></div>
                 <div class="flex justify-between text-[10px]"><span>পেইড:</span><span>৳ ${paid}</span></div>
@@ -2710,7 +2375,7 @@
             document.getElementById('a4-cust-phone').innerText = "ফোন: " + customerPhone;
             document.getElementById('a4-table-body').innerHTML = a4Rows;
             document.getElementById('a4-subtotal').innerText = "৳ " + subtotal;
-            document.getElementById('a4-vat').innerText = "৳ " + taxAmount;
+            document.getElementById('a4-vat').innerText = "৳ " + vatAmount;
             document.getElementById('a4-discount').innerText = "৳ " + discount;
             document.getElementById('a4-total').innerText = "৳ " + finalSubtotal;
             
@@ -2727,9 +2392,7 @@
             closeModal('posModal');
             toggleInvoiceType('thermal');
             openModal('invoicePreviewModal');
-            showToast(translations[currentLanguage]['sale-complete'], "success");
-            
-            checkDailyTarget();
+            showToast("✅ বিক্রি সম্পন্ন হয়েছে!", "success");
         }
 
         // ==================== SALES & REPORTS ====================
@@ -2766,7 +2429,7 @@
 
             products.forEach(p => {
                 totalStockValue += (p.buy * p.qty);
-                if(p.qty < minStockThreshold) lowStockItems.push(`${p.name} (স্টক: ${p.qty} ${p.unit || ''})`);
+                if(p.qty < 5) lowStockItems.push(`${p.name} (স্টক: ${p.qty} ${p.unit || ''})`);
                 
                 if(p.expiry) {
                     let expDate = new Date(p.expiry);
@@ -2853,7 +2516,7 @@
 
         function generateDetailedReport() {
             if (currentUserRole === 'staff' && !currentUserPermissions.dailyClosing) {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("আপনার রিপোর্ট দেখার অনুমতি নেই!", "error");
                 return;
             }
             
@@ -2906,7 +2569,7 @@
 
         function downloadPDFReport() {
             if (currentUserRole === 'staff' && !currentUserPermissions.dailyClosing) {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("আপনার রিপোর্ট ডাউনলোডের অনুমতি নেই!", "error");
                 return;
             }
             
@@ -2957,7 +2620,7 @@
         // ==================== DUE COLLECTION ====================
         function searchDueRecords() {
             if (currentUserRole === 'staff' && !currentUserPermissions.dueCollection) {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("আপনার বাকি আদায়ের অনুমতি নেই!", "error");
                 return;
             }
             
@@ -2995,14 +2658,14 @@
                 calculateDashboardStats();
                 searchDueRecords();
                 renderRecentSales();
-                showToast(translations[currentLanguage]['payment-success'], "success");
+                showToast("✅ টাকা জমা হয়েছে!", "success");
             }
         }
 
         // ==================== RETURN ====================
         function findInvoiceForReturn() {
             if (currentUserRole === 'staff' && !currentUserPermissions.return) {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("আপনার রিটার্ন করার অনুমতি নেই!", "error");
                 return;
             }
             
@@ -3015,7 +2678,7 @@
                 return;
             }
             if(!record.cartItems) {
-                showToast("আইটেম ডিটেইলস নেই!", "error");
+                showToast("দুঃখিত, এই ইনভয়েসের আইটেম ডিটেইলস খুঁজে পাওয়া যাচ্ছে না।", "error");
                 return;
             }
 
@@ -3032,16 +2695,9 @@
                             <p class="text-xs text-gray-500">বিক্রিত পরিমাণ: ${item.orderQty} ${item.unit || ''}</p>
                         </div>
                         <div class="flex items-center gap-2">
-                            <select id="return-reason-${idx}" class="text-xs border rounded p-1">
-                                <option value="damaged">${translations[currentLanguage]['damaged']}</option>
-                                <option value="expired">${translations[currentLanguage]['expired']}</option>
-                                <option value="wrong-item">${translations[currentLanguage]['wrong-item']}</option>
-                                <option value="customer-return">${translations[currentLanguage]['customer-return']}</option>
-                                <option value="warranty">${translations[currentLanguage]['warranty-claim']}</option>
-                            </select>
                             <input type="number" id="return-qty-${idx}" value="0" min="0" max="${item.orderQty}" class="w-16 border rounded p-2 text-center font-bold text-red-600">
                             <button onclick="confirmItemReturn('${invNo}', ${idx})" class="bg-red-500 text-white px-3 py-2 rounded text-sm hover:bg-red-600 transition-all touch-target">
-                                <i class="fas fa-undo mr-1"></i>${translations[currentLanguage]['return']}
+                                <i class="fas fa-undo mr-1"></i>ফেরত
                             </button>
                         </div>
                     </div>
@@ -3051,10 +2707,8 @@
 
         function confirmItemReturn(invNo, itemIdx) {
             let returnQty = parseFloat(document.getElementById(`return-qty-${itemIdx}`).value) || 0;
-            let returnReason = document.getElementById(`return-reason-${itemIdx}`).value;
-            
             if(returnQty <= 0) {
-                showToast("কতটুকু ফেরত নিবেন?", "error");
+                showToast("কতটুকু ফেরত নিবেন তার সংখ্যা দিন।", "error");
                 return;
             }
 
@@ -3062,11 +2716,11 @@
             let item = record.cartItems[itemIdx];
 
             if(returnQty > item.orderQty) {
-                showToast("বিক্রিত পরিমাণের চেয়ে বেশি!", "error");
+                showToast("বিক্রিত পরিমাণের চেয়ে বেশি ফেরত নেওয়া সম্ভব নয়।", "error");
                 return;
             }
 
-            if(!confirm(`${item.name} এর ${returnQty} ${item.unit || ''} ফেরত নিতে চাচ্ছেন?`)) return;
+            if(!confirm(`${item.name} এর ${returnQty} ${item.unit || ''} ফেরত নিতে চাচ্ছেন? এর ফলে স্টক অটোমেটিক আপডেট হবে।`)) return;
 
             let productInSystem = products.find(p => p.name === item.name);
             if(productInSystem) {
@@ -3083,14 +2737,6 @@
             record.profit -= (returnAmount - returnCost);
             record.amount -= returnAmount;
 
-            if (!record.returns) record.returns = [];
-            record.returns.push({
-                itemName: item.name,
-                qty: returnQty,
-                reason: returnReason,
-                date: new Date().toISOString()
-            });
-
             if(record.cartItems.every(i => i.orderQty === 0)) record.status = 'Returned';
 
             saveToStorage();
@@ -3098,7 +2744,7 @@
             renderRecentSales();
             renderPOSProducts();
             
-            showToast(translations[currentLanguage]['return-success'], "success");
+            showToast("✅ আইটেম ফেরত নেওয়া হয়েছে এবং স্টক আপডেট হয়েছে!", "success");
             findInvoiceForReturn();
         }
 
@@ -3115,7 +2761,7 @@
             renderSupplierList();
             document.getElementById('sup-name').value = '';
             document.getElementById('sup-due').value = '';
-            showToast(translations[currentLanguage]['supplier-added'], "success");
+            showToast("✅ সাপ্লাইয়ার যোগ হয়েছে!", "success");
         }
 
         function renderSupplierList() {
@@ -3147,7 +2793,7 @@
         // ==================== EXPENSE ====================
         function addExpense() {
             if (currentUserRole === 'staff' && !currentUserPermissions.expenseView) {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("আপনার খরচ এড করার অনুমতি নেই!", "error");
                 return;
             }
             
@@ -3155,14 +2801,14 @@
             let title = document.getElementById('exp-title').value;
             let date = document.getElementById('exp-date').value || new Date().toISOString().split('T')[0];
             if(!title || !amount) {
-                showToast(translations[currentLanguage]['fill-all-fields'], "error");
+                showToast("সব তথ্য দিন", "error");
                 return;
             }
             expenses.push({ title, amount, date });
             saveToStorage();
             calculateDashboardStats(); 
             closeModal('expenseModal'); 
-            showToast(translations[currentLanguage]['expense-added'], "success");
+            showToast("✅ খরচ যোগ হয়েছে!", "success");
         }
 
         // ==================== STOCK HISTORY ====================
@@ -3208,7 +2854,7 @@
         // ==================== DAILY CLOSING ====================
         function dailyClosingReport() {
             if (currentUserRole === 'staff' && !currentUserPermissions.dailyClosing) {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("আপনার ডেইলি ক্লোজিং দেখার অনুমতি নেই!", "error");
                 return;
             }
             
@@ -3253,14 +2899,10 @@
             config.shopName = document.getElementById('conf-shop-name').value;
             config.vat = parseFloat(document.getElementById('conf-vat').value) || 0;
             config.invoiceNote = document.getElementById('conf-note').value;
-            config.dailyTarget = parseFloat(document.getElementById('daily-target')?.value) || 0;
-            config.monthlyTarget = parseFloat(document.getElementById('monthly-target')?.value) || 0;
-            config.yearlyTarget = parseFloat(document.getElementById('yearly-target')?.value) || 0;
-            
             saveToStorage();
             applyConfig();
             closeModal('settingsModal');
-            showToast(translations[currentLanguage]['settings-saved'], "success");
+            showToast("✅ সেটিংস সেভ হয়েছে!", "success");
         }
 
         // ==================== INVOICE ====================
@@ -3301,7 +2943,7 @@
         // ==================== EXPORT ====================
         function exportData() {
             if (currentUserRole !== 'owner' && currentUserRole !== 'admin') {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("শুধুমাত্র মালিক ব্যাকআপ নিতে পারবেন!", "error");
                 return;
             }
             
@@ -3312,721 +2954,35 @@
                 stockHistory, 
                 customers, 
                 config, 
-                suppliers,
-                branches,
-                warehouses
+                suppliers
             }));
             let link = document.createElement('a');
             link.setAttribute("href", data);
             link.setAttribute("download", `backup_${currentUser}_${new Date().toISOString().split('T')[0]}.json`);
             link.click();
-            showToast(translations[currentLanguage]['backup-start'], "success");
+            showToast("✅ ব্যাকআপ ডাউনলোড হচ্ছে!", "success");
         }
 
         function clearAllData() {
             if (currentUserRole !== 'owner' && currentUserRole !== 'admin') {
-                showToast(translations[currentLanguage]['permission-denied'], "error");
+                showToast("শুধুমাত্র মালিক ডাটা রিসেট করতে পারবেন!", "error");
                 return;
             }
-            if(confirm(translations[currentLanguage]['data-reset'] + "?")) { 
+            if(confirm("আপনার সমস্ত ডাটা ডিলিট হবে। নিশ্চিত?")) { 
                 localStorage.clear(); 
                 location.reload(); 
             }
         }
 
-        // ==================== PRODUCT IMAGE UPLOAD ====================
-        function previewProductImages(event) {
-            const files = Array.from(event.target.files);
-            const gallery = document.getElementById('product-image-gallery');
-            
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    productImages.push(e.target.result);
-                    gallery.innerHTML += `
-                        <div class="gallery-item">
-                            <img src="${e.target.result}" alt="Product">
-                            <div class="remove-image" onclick="removeProductImage('${e.target.result}')">
-                                <i class="fas fa-times"></i>
-                            </div>
-                        </div>
-                    `;
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-
-        function removeProductImage(image) {
-            productImages = productImages.filter(img => img !== image);
-            renderProductImages();
-        }
-
-        function renderProductImages() {
-            const gallery = document.getElementById('product-image-gallery');
-            gallery.innerHTML = productImages.map(img => `
-                <div class="gallery-item">
-                    <img src="${img}" alt="Product">
-                    <div class="remove-image" onclick="removeProductImage('${img}')">
-                        <i class="fas fa-times"></i>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // ==================== BRANCH MANAGEMENT ====================
-        function addBranch() {
-            const name = document.getElementById('branch-name').value.trim();
-            const location = document.getElementById('branch-location').value.trim();
-            const phone = document.getElementById('branch-phone').value.trim();
-            
-            if (!name) {
-                showToast(translations[currentLanguage]['fill-all-fields'], "error");
-                return;
-            }
-            
-            const branch = {
-                id: 'branch_' + Date.now(),
-                name,
-                location,
-                phone
-            };
-            
-            branches.push(branch);
-            saveBranches();
-            renderBranchList();
-            
-            const select = document.getElementById('branchSelect');
-            select.innerHTML += `<option value="${branch.id}">${branch.name}</option>`;
-            document.getElementById('branchSelector').classList.remove('hidden');
-            
-            document.getElementById('branch-name').value = '';
-            document.getElementById('branch-location').value = '';
-            document.getElementById('branch-phone').value = '';
-            
-            showToast(translations[currentLanguage]['branch-added'], "success");
-        }
-
-        function saveBranches() {
-            localStorage.setItem('branches', JSON.stringify(branches));
-        }
-
-        function renderBranchList() {
-            const listDiv = document.getElementById('branch-list');
-            if (!listDiv) return;
-            
-            listDiv.innerHTML = branches.map(branch => `
-                <div class="bg-white p-4 rounded-lg border hover:shadow-md transition-all">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="font-bold">${branch.name}</p>
-                            <p class="text-sm text-gray-600">${branch.location || 'N/A'}</p>
-                            <p class="text-xs text-gray-500">${branch.phone || 'N/A'}</p>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="transferStock('${branch.id}')" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 transition-all">
-                                <i class="fas fa-exchange-alt mr-1"></i>ট্রান্সফার
-                            </button>
-                            <button onclick="deleteBranch('${branch.id}')" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition-all">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function switchBranch(branchId) {
-            currentBranch = branchId;
-            loadUserData();
-            showToast(`শাখা পরিবর্তন করা হয়েছে`, "success");
-        }
-
-        function deleteBranch(branchId) {
-            if (branchId === 'main') {
-                showToast('মূল শাখা ডিলিট করা যাবে না', 'error');
-                return;
-            }
-            if (confirm('শাখাটি ডিলিট করবেন?')) {
-                branches = branches.filter(b => b.id !== branchId);
-                saveBranches();
-                renderBranchList();
-                
-                const select = document.getElementById('branchSelect');
-                select.innerHTML = '<option value="main">মূল শাখা</option>' + 
-                    branches.filter(b => b.id !== 'main').map(b => `<option value="${b.id}">${b.name}</option>`).join('');
-            }
-        }
-
-        function transferStock(branchId) {
-            const productId = prompt('প্রোডাক্ট আইডি দিন:');
-            const qty = parseInt(prompt('পরিমাণ:'));
-            if (productId && qty) {
-                showToast(translations[currentLanguage]['stock-transferred'], 'success');
-            }
-        }
-
-        // ==================== INVENTORY MANAGEMENT ====================
-        function renderInventoryData() {
-            renderWarehouseList();
-            checkLowStock();
-        }
-
-        function addWarehouse() {
-            const name = document.getElementById('warehouse-name').value.trim();
-            const location = document.getElementById('warehouse-location').value.trim();
-            
-            if (!name) {
-                showToast('নাম দিন', 'error');
-                return;
-            }
-            
-            const warehouse = {
-                id: 'wh_' + Date.now(),
-                name,
-                location
-            };
-            
-            warehouses.push(warehouse);
-            saveWarehouses();
-            renderWarehouseList();
-            
-            document.getElementById('warehouse-name').value = '';
-            document.getElementById('warehouse-location').value = '';
-            
-            const select = document.getElementById('p-warehouse');
-            select.innerHTML = `<option value="main">মূল গোডাউন</option>` + 
-                warehouses.filter(w => w.id !== 'main').map(w => `<option value="${w.id}">${w.name}</option>`).join('');
-            
-            showToast('ওয়ারহাউস যোগ হয়েছে', 'success');
-        }
-
-        function saveWarehouses() {
-            localStorage.setItem('warehouses', JSON.stringify(warehouses));
-        }
-
-        function renderWarehouseList() {
-            const listDiv = document.getElementById('warehouse-list');
-            if (!listDiv) return;
-            
-            listDiv.innerHTML = warehouses.map(wh => `
-                <div class="bg-white p-2 rounded border mb-2 flex justify-between items-center">
-                    <div>
-                        <p class="font-bold">${wh.name}</p>
-                        <p class="text-xs text-gray-500">${wh.location || ''}</p>
-                    </div>
-                    <button onclick="deleteWarehouse('${wh.id}')" class="text-red-500">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            `).join('');
-        }
-
-        function deleteWarehouse(whId) {
-            if (whId === 'main') {
-                showToast('মূল ওয়ারহাউস ডিলিট করা যাবে না', 'error');
-                return;
-            }
-            warehouses = warehouses.filter(w => w.id !== whId);
-            saveWarehouses();
-            renderWarehouseList();
-        }
-
-        function searchBatch() {
-            const batch = document.getElementById('batch-search').value.trim();
-            if (!batch) return;
-            
-            const results = products.filter(p => p.batch === batch);
-            const div = document.getElementById('batch-results');
-            div.innerHTML = results.map(p => `
-                <div class="bg-white p-2 rounded border mb-1">
-                    ${p.name} - স্টক: ${p.qty} ${p.unit}
-                </div>
-            `).join('');
-        }
-
-        function searchSerial() {
-            const serial = document.getElementById('serial-search').value.trim();
-            if (!serial) return;
-            
-            const results = products.filter(p => p.serials && p.serials.includes(serial));
-            const div = document.getElementById('serial-results');
-            div.innerHTML = results.map(p => `
-                <div class="bg-white p-2 rounded border mb-1">
-                    ${p.name} - সিরিয়াল: ${serial}
-                </div>
-            `).join('');
-        }
-
-        function setMinStockThreshold() {
-            const threshold = parseInt(document.getElementById('min-stock-threshold').value);
-            if (threshold > 0) {
-                minStockThreshold = threshold;
-                showToast(`থ্রেশহোল্ড সেট করা হয়েছে: ${threshold}`, 'success');
-                checkLowStock();
-            }
-        }
-
-        function checkLowStock() {
-            const lowStock = products.filter(p => p.qty < minStockThreshold);
-            const div = document.getElementById('low-stock-list');
-            if (div) {
-                div.innerHTML = lowStock.map(p => `
-                    <div class="bg-red-50 p-2 rounded border mb-1 text-red-600">
-                        ${p.name} - স্টক: ${p.qty} ${p.unit}
-                    </div>
-                `).join('');
-            }
-            
-            if (lowStock.length > 0) {
-                document.getElementById('low-stock-alert').style.display = 'block';
-                document.getElementById('low-stock-items').innerHTML = lowStock.map(i => 
-                    `<li>${i.name} (স্টক: ${i.qty} ${i.unit})</li>`
-                ).join('');
-            }
-        }
-
-        function generateAutoPO() {
-            const lowStock = products.filter(p => p.qty < minStockThreshold);
-            if (lowStock.length === 0) {
-                showToast('কোনো পণ্য কম স্টকে নেই', 'info');
-                return;
-            }
-            
-            const po = {
-                id: 'PO_' + Date.now(),
-                date: new Date().toISOString(),
-                items: lowStock.map(p => ({
-                    name: p.name,
-                    currentStock: p.qty,
-                    requiredQty: minStockThreshold * 2 - p.qty
-                }))
-            };
-            
-            console.log('Purchase Order:', po);
-            showToast('পিও জেনারেট হয়েছে', 'success');
-        }
-
-        // ==================== ADVANCED REPORTS ====================
-        let trendChart, profitLossAdvancedChart, categoryChart, branchChart;
-
-        function generateAdvancedReport() {
-            const type = document.getElementById('report-type').value;
-            const start = document.getElementById('report-start-date').value;
-            const end = document.getElementById('report-end-date').value;
-            
-            let startDate, endDate;
-            
-            if (type === 'custom' && start && end) {
-                startDate = new Date(start);
-                endDate = new Date(end);
-            } else {
-                const now = new Date();
-                switch(type) {
-                    case 'daily':
-                        startDate = new Date(now.setHours(0,0,0,0));
-                        endDate = new Date(now.setHours(23,59,59,999));
-                        break;
-                    case 'weekly':
-                        startDate = new Date(now.setDate(now.getDate() - 7));
-                        endDate = new Date();
-                        break;
-                    case 'monthly':
-                        startDate = new Date(now.setMonth(now.getMonth() - 1));
-                        endDate = new Date();
-                        break;
-                    case 'yearly':
-                        startDate = new Date(now.setFullYear(now.getFullYear() - 1));
-                        endDate = new Date();
-                        break;
-                }
-            }
-            
-            const filteredSales = salesRecords.filter(s => {
-                const d = new Date(s.date);
-                return d >= startDate && d <= endDate;
-            });
-            
-            renderReportTable(filteredSales);
-            updateTrendChart(filteredSales);
-            updateProfitLossChart(filteredSales);
-            updateCategoryChart();
-            updateBranchChart(filteredSales);
-        }
-
-        function renderReportTable(sales) {
-            const tbody = document.getElementById('report-table-body');
-            const dailyData = {};
-            
-            sales.forEach(s => {
-                const date = s.date.split('T')[0];
-                if (!dailyData[date]) {
-                    dailyData[date] = { sales: 0, profit: 0, expense: 0 };
-                }
-                dailyData[date].sales += s.amount;
-                dailyData[date].profit += s.profit;
-            });
-            
-            expenses.forEach(e => {
-                if (dailyData[e.date]) {
-                    dailyData[e.date].expense += e.amount;
-                }
-            });
-            
-            tbody.innerHTML = Object.entries(dailyData).map(([date, data]) => `
-                <tr>
-                    <td class="p-2 border">${new Date(date).toLocaleDateString('bn-BD')}</td>
-                    <td class="p-2 border">৳ ${data.sales}</td>
-                    <td class="p-2 border">৳ ${data.profit}</td>
-                    <td class="p-2 border">৳ ${data.expense}</td>
-                    <td class="p-2 border font-bold">৳ ${data.profit - data.expense}</td>
-                </tr>
-            `).join('');
-        }
-
-        function updateTrendChart(sales) {
-            const ctx = document.getElementById('trendChart')?.getContext('2d');
-            if (!ctx) return;
-            
-            if (trendChart) trendChart.destroy();
-            
-            const dates = [];
-            const amounts = [];
-            
-            sales.slice(0, 30).reverse().forEach(s => {
-                dates.push(new Date(s.date).toLocaleDateString('bn-BD'));
-                amounts.push(s.amount);
-            });
-            
-            trendChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: dates,
-                    datasets: [{
-                        label: 'বিক্রি',
-                        data: amounts,
-                        borderColor: '#4f46e5',
-                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                }
-            });
-        }
-
-        function updateProfitLossChart(sales) {
-            const ctx = document.getElementById('profitLossAdvancedChart')?.getContext('2d');
-            if (!ctx) return;
-            
-            if (profitLossAdvancedChart) profitLossAdvancedChart.destroy();
-            
-            const dates = [];
-            const profits = [];
-            const losses = [];
-            
-            sales.slice(0, 30).reverse().forEach(s => {
-                dates.push(new Date(s.date).toLocaleDateString('bn-BD'));
-                profits.push(s.profit);
-                losses.push(0);
-            });
-            
-            profitLossAdvancedChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: dates,
-                    datasets: [
-                        {
-                            label: 'লাভ',
-                            data: profits,
-                            backgroundColor: '#10b981'
-                        },
-                        {
-                            label: 'লস',
-                            data: losses,
-                            backgroundColor: '#ef4444'
-                        }
-                    ]
-                }
-            });
-        }
-
-        function updateCategoryChart() {
-            const ctx = document.getElementById('categoryChart')?.getContext('2d');
-            if (!ctx) return;
-            
-            if (categoryChart) categoryChart.destroy();
-            
-            const categories = {};
-            products.forEach(p => {
-                const cat = p.category || 'অন্যান্য';
-                categories[cat] = (categories[cat] || 0) + p.qty;
-            });
-            
-            categoryChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: Object.keys(categories),
-                    datasets: [{
-                        data: Object.values(categories),
-                        backgroundColor: ['#4f46e5', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']
-                    }]
-                }
-            });
-        }
-
-        function updateBranchChart(sales) {
-            const ctx = document.getElementById('branchChart')?.getContext('2d');
-            if (!ctx) return;
-            
-            if (branchChart) branchChart.destroy();
-            
-            const branchSales = {};
-            sales.forEach(s => {
-                const branch = s.branch || 'main';
-                branchSales[branch] = (branchSales[branch] || 0) + s.amount;
-            });
-            
-            const branchNames = {};
-            branches.forEach(b => branchNames[b.id] = b.name);
-            
-            branchChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: Object.keys(branchSales).map(b => branchNames[b] || b),
-                    datasets: [{
-                        label: 'বিক্রি',
-                        data: Object.values(branchSales),
-                        backgroundColor: '#4f46e5'
-                    }]
-                }
-            });
-        }
-
-        function exportReportPDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            doc.setFontSize(18);
-            doc.text(config.shopName, 105, 15, {align: 'center'});
-            doc.setFontSize(12);
-            doc.text('বিক্রি রিপোর্ট', 105, 25, {align: 'center'});
-            
-            const tableData = [];
-            document.querySelectorAll('#report-table-body tr').forEach(tr => {
-                const row = [];
-                tr.querySelectorAll('td').forEach(td => row.push(td.innerText));
-                tableData.push(row);
-            });
-            
-            doc.autoTable({
-                startY: 35,
-                head: [['তারিখ', 'বিক্রি', 'লাভ', 'খরচ', 'নিট']],
-                body: tableData
-            });
-            
-            doc.save('report.pdf');
-        }
-
-        function exportReportExcel() {
-            const wb = XLSX.utils.book_new();
-            const wsData = [['তারিখ', 'বিক্রি', 'লাভ', 'খরচ', 'নিট']];
-            
-            document.querySelectorAll('#report-table-body tr').forEach(tr => {
-                const row = [];
-                tr.querySelectorAll('td').forEach(td => row.push(td.innerText));
-                wsData.push(row);
-            });
-            
-            const ws = XLSX.utils.aoa_to_sheet(wsData);
-            XLSX.utils.book_append_sheet(wb, ws, 'Report');
-            XLSX.writeFile(wb, 'report.xlsx');
-        }
-
-        function printReport() {
-            window.print();
-        }
-
-        // ==================== CLOUD BACKUP ====================
-        function initGoogleDrive() {
-            gapi.load('client:auth2', () => {
-                gapi.client.init({
-                    apiKey: 'YOUR_API_KEY',
-                    clientId: 'YOUR_CLIENT_ID',
-                    scope: 'https://www.googleapis.com/auth/drive.file'
-                });
-            });
-        }
-
-        function backupToGoogleDrive() {
-            const data = {
-                products, salesRecords, expenses, stockHistory, customers, suppliers, config, users, branches, warehouses
-            };
-            
-            const blob = new Blob([JSON.stringify(data)], {type: 'application/json'});
-            const file = new File([blob], `backup_${Date.now()}.json`, {type: 'application/json'});
-            
-            showToast(translations[currentLanguage]['backup-start'], "success");
-            createRecoveryPoint(data);
-        }
-
-        function restoreFromGoogleDrive() {
-            showToast('রিস্টোর সম্পন্ন', 'success');
-        }
-
-        function backupToDropbox() {
-            const data = {
-                products, salesRecords, expenses, stockHistory, customers, suppliers, config, users, branches, warehouses
-            };
-            
-            showToast(translations[currentLanguage]['backup-start'], "success");
-            createRecoveryPoint(data);
-        }
-
-        function restoreFromDropbox() {
-            showToast('রিস্টোর সম্পন্ন', 'success');
-        }
-
-        function createRecoveryPoint(data) {
-            recoveryPoints.push({
-                timestamp: Date.now(),
-                data: data
-            });
-            localStorage.setItem('recovery_points', JSON.stringify(recoveryPoints));
-        }
-
-        function showRecoveryPoints() {
-            const points = recoveryPoints.map((p, i) => 
-                `${i + 1}. ${new Date(p.timestamp).toLocaleString()}`
-            ).join('\n');
-            
-            alert('রিকভারি পয়েন্ট:\n' + (points || 'কোনো পয়েন্ট নেই'));
-        }
-
-        function setAutoBackup() {
-            const schedule = document.getElementById('backup-schedule').value;
-            config.autoBackup = true;
-            config.backupSchedule = schedule;
-            saveToStorage();
-            
-            let interval;
-            switch(schedule) {
-                case 'daily': interval = 24 * 60 * 60 * 1000; break;
-                case 'weekly': interval = 7 * 24 * 60 * 60 * 1000; break;
-                case 'monthly': interval = 30 * 24 * 60 * 60 * 1000; break;
-                case 'yearly': interval = 365 * 24 * 60 * 60 * 1000; break;
-            }
-            
-            if (backupSchedule) clearInterval(backupSchedule);
-            backupSchedule = setInterval(() => {
-                if (config.autoBackup) {
-                    backupToGoogleDrive();
-                }
-            }, interval);
-            
-            showToast('অটো ব্যাকআপ সেট করা হয়েছে', 'success');
-        }
-
-        function syncDevices() {
-            showToast('ডিভাইস সিঙ্ক শুরু হয়েছে', 'info');
-            setTimeout(() => showToast('সিঙ্ক সম্পন্ন', 'success'), 2000);
-        }
-
-        // ==================== OFFLINE SYNC ====================
-        function addToOfflineQueue(action, data) {
-            offlineQueue.push({ action, data, timestamp: Date.now() });
-            localStorage.setItem('offline_queue', JSON.stringify(offlineQueue));
-        }
-
-        function syncOfflineData() {
-            const queue = JSON.parse(localStorage.getItem('offline_queue') || '[]');
-            queue.forEach(async item => {
-                try {
-                    switch(item.action) {
-                        case 'sale':
-                            salesRecords.push(item.data);
-                            break;
-                        case 'product':
-                            products.push(item.data);
-                            break;
-                    }
-                    saveToStorage();
-                } catch (error) {
-                    console.error('Sync failed:', error);
-                }
-            });
-            localStorage.removeItem('offline_queue');
-            offlineQueue = [];
-        }
-
-        // ==================== DAILY TARGET ALERT ====================
-        function checkDailyTarget() {
-            if (!config.dailyTarget) return;
-            
-            const today = new Date().toISOString().split('T')[0];
-            const todaySales = salesRecords.filter(s => s.date.startsWith(today));
-            const total = todaySales.reduce((sum, s) => sum + s.amount, 0);
-            
-            if (total >= config.dailyTarget) {
-                const alertDiv = document.getElementById('target-alert');
-                if (!alertDiv) return;
-                
-                const itemsDiv = document.getElementById('target-items');
-                if (itemsDiv) {
-                    itemsDiv.innerHTML = `<li>আজকের টার্গেট (৳${config.dailyTarget}) পূর্ণ হয়েছে! মোট বিক্রি: ৳${total}</li>`;
-                }
-                alertDiv.style.display = 'block';
-                
-                if (Notification.permission === 'granted') {
-                    new Notification('টার্গেট পূর্ণ!', { 
-                        body: `আজকের টার্গেট ৳${config.dailyTarget} পূর্ণ হয়েছে` 
-                    });
-                }
-            }
-        }
-
         // ==================== KEYBOARD SHORTCUTS ====================
-        function showShortcuts() {
-            alert(
-                'কীবোর্ড শর্টকাট:\n' +
-                'F2 - POS খুলুন\n' +
-                'Ctrl+N - নতুন বিক্রয়\n' +
-                'Ctrl+S - সংরক্ষণ\n' +
-                'Ctrl+P - প্রিন্ট\n' +
-                'Ctrl+F - সার্চ\n' +
-                'F5 - রিফ্রেশ\n' +
-                'Esc - মোডাল বন্ধ করুন'
-            );
-        }
-
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'F2') { 
+            if(e.key === 'F2') { 
                 e.preventDefault(); 
                 openModal('posModal'); 
             }
-            if (e.key === 'Escape') { 
+            if(e.key === 'Escape') { 
                 document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
                 document.body.style.overflow = '';
-            }
-            if (e.ctrlKey && e.key === 'n') {
-                e.preventDefault();
-                openModal('posModal');
-            }
-            if (e.ctrlKey && e.key === 's') {
-                e.preventDefault();
-                saveToStorage();
-                showToast('সংরক্ষিত', 'success');
-            }
-            if (e.ctrlKey && e.key === 'p') {
-                e.preventDefault();
-                window.print();
-            }
-            if (e.ctrlKey && e.key === 'f') {
-                e.preventDefault();
-                document.getElementById('pos-search')?.focus();
-            }
-            if (e.key === 'F5') {
-                e.preventDefault();
-                loadUserData();
-                showToast('রিফ্রেশ করা হয়েছে', 'info');
             }
         });
 
@@ -4042,22 +2998,8 @@
             document.body.setAttribute('data-layout', layout);
         }
 
-        // ==================== INITIAL LOAD ====================
         window.onload = function() {
             initializeSystem();
-            
-            const savedLang = localStorage.getItem('preferred_language');
-            if (savedLang) {
-                setLanguage(savedLang);
-            }
-            
-            updateOnlineStatus();
-            
-            if (Notification.permission === 'default') {
-                Notification.requestPermission();
-            }
-            
-            initGoogleDrive();
             
             const savedUser = localStorage.getItem('currentUser');
             const savedRole = localStorage.getItem('currentUserRole');
